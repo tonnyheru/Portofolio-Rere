@@ -10,15 +10,20 @@ export default function Footer() {
           <span className="font-body text-silver/60 text-sm">Renaray Dwi Indah Sari</span>
         </div>
         <div className="flex items-center gap-6">
-          <a href="mailto:renaraayan@gmail.com" className="font-mono text-silver/40 text-xs hover:text-neon/70 transition-colors">
+          <a href="https://mail.google.com/mail/?view=cm&to=renaraayan@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-silver/40 text-xs hover:text-neon/70 transition-colors">
             renaraayan@gmail.com
           </a>
-          <a href="https://wa.me/6285159522095" target="_blank" rel="noopener noreferrer"
+          <a href="https://wa.me/6285159522095"
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-mono text-silver/40 text-xs hover:text-neon/70 transition-colors">
             085159522095
           </a>
         </div>
-        <p className="font-mono text-silver/30 text-xs">© 2026 · All rights reserved</p>
+        <p className="font-mono text-silver/30 text-xs">Copyright © 2026, M Tonny Heru Susanto. All rights reserved</p>
       </div>
     </footer>
   );
