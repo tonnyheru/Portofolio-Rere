@@ -11,14 +11,14 @@ const techSkills = [
 ];
 
 const coreSkills = [
-  { name: "Purchasing", desc: "Manajemen siklus pengadaan lengkap", icon: "📦"},
-  { name: "Cost Control", desc: "Analisis biaya dan efisiensi", icon: "💰"},
-  { name: "Inventory Mgmt", desc: "Monitoring & digitalisasi stok", icon: "🗄️"},
-  { name: "Vendor Negotiation", desc: "Negosiasi harga & Term of Payment", icon: "🤝"},
-  { name: "Demand Forecasting", desc: "Prediksi kebutuhan bahan baku", icon: "📈", level: 85 },
-  { name: "Stock Opname", desc: "Audit fisik & akurasi data", icon: "✅", level: 95 },
-  { name: "COGS Analysis", desc: "Harga pokok penjualan", icon: "📉", level: 88 },
-  { name: "Admin Keuangan", desc: "Invoice, kontra bon, laporan kas", icon: "📋"},
+  { name: "Purchasing", desc: "Manajemen siklus pengadaan lengkap", icon: "📦" },
+  { name: "Cost Control", desc: "Analisis biaya dan efisiensi", icon: "💰" },
+  { name: "Inventory Mgmt", desc: "Monitoring & digitalisasi stok", icon: "🗄️" },
+  { name: "Vendor Negotiation", desc: "Negosiasi harga & Term of Payment", icon: "🤝" },
+  { name: "Demand Forecasting", desc: "Prediksi kebutuhan bahan baku", icon: "📈" },
+  { name: "Stock Opname", desc: "Audit fisik & akurasi data", icon: "✅" },
+  { name: "COGS Analysis", desc: "Harga pokok penjualan", icon: "📉" },
+  { name: "Admin Keuangan", desc: "Invoice, kontra bon, laporan kas", icon: "📋" },
 ];
 
 const marqueeSkills1 = ["ESB", "MOKA POS", "Mille", "Olsera", "Google Sheets", "FIFO", "FEFO", "Purchasing", "Cost Control", "COGS", "Stock Opname", "Forecasting"];
@@ -26,7 +26,6 @@ const marqueeSkills2 = ["Vendor Negotiation", "Food Costing", "Inventory Managem
 
 export default function Skills() {
   const ref = useRef<HTMLDivElement>(null);
-  
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -75,18 +74,7 @@ export default function Skills() {
               <h3 className="font-body font-semibold text-frost text-sm mb-1 group-hover:text-neon-2 transition-colors">
                 {skill.name}
               </h3>
-              <p className="font-body text-silver text-xs leading-relaxed mb-4">{skill.desc}</p>
-
-              {/* Mini progress bar */}
-              <div className="h-0.5 bg-graphite-2/80 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-neon/60 to-neon rounded-full transition-all duration-1000"
-                  style={{
-                    width: visible ? `${skill.level}%` : "0%",
-                    transitionDelay: `${i * 0.08}s`,
-                  }}
-                />
-              </div>
+              <p className="font-body text-silver text-xs leading-relaxed">{skill.desc}</p>
             </div>
           ))}
         </div>
@@ -99,7 +87,7 @@ export default function Skills() {
               <div key={i}
                 className="glass rounded-2xl p-5 border border-graphite-2/60 glass-hover transition-all duration-300 group"
               >
-                <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-neon/5 border border-neon/15 flex items-center justify-center text-xl
                     group-hover:border-neon/30 transition-all">
                     {skill.icon}
@@ -108,15 +96,6 @@ export default function Skills() {
                     <p className="font-body font-semibold text-frost text-sm">{skill.name}</p>
                     <p className="font-mono text-neon/50 text-[10px] tracking-wider">{skill.category}</p>
                   </div>
-                </div>
-                <div className="h-1 bg-graphite-2/80 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-neon/40 to-neon rounded-full transition-all duration-1200"
-                    style={{
-                      width: visible ? `${skill.level}%` : "0%",
-                      transitionDelay: `${i * 0.1 + 0.3}s`,
-                    }}
-                  />
                 </div>
               </div>
             ))}
