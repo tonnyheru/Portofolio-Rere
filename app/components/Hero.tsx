@@ -215,7 +215,7 @@ export default function Hero() {
                   backgroundClip: "text",
                   animation: "nameShine 4s linear infinite",
                 }}
-                className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl leading-[1.1]"
+                className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl leading-[1.1]"
               >
                 Renaray Dwi Indah Sari
               </h1>
