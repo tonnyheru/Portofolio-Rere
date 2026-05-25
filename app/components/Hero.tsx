@@ -192,7 +192,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 gap-10 md:gap-12 lg:grid-cols-2 lg:gap-20 items-center">
 
           {/* Left: Text */}
           <div className={`${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} transition-all duration-1000 order-2 lg:order-1`}>
@@ -215,7 +215,7 @@ export default function Hero() {
                   backgroundClip: "text",
                   animation: "nameShine 4s linear infinite",
                 }}
-                className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl leading-[1.1]"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-[1.1]"
               >
                 Renaray Dwi Indah Sari
               </h1>
@@ -291,7 +291,7 @@ export default function Hero() {
           {/* Right: ID Card */}
           <div
             ref={cardContainerRef}
-            className={`flex justify-center lg:justify-end order-1 lg:order-2 ${mounted ? "opacity-100" : "opacity-0"} transition-opacity duration-1000 delay-300`}
+            className={`flex justify-center lg:justify-end order-1 lg:order-2 mt-10 lg:mt-0 ${mounted ? "opacity-100" : "opacity-0"} transition-opacity duration-1000 delay-300`}
           >
             <div className="flex flex-col items-center select-none">
               {/* Lanyard */}
@@ -308,7 +308,7 @@ export default function Hero() {
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
                 onMouseDown={handleMouseDown}
-                className="relative w-64 sm:w-72 cursor-grab active:cursor-grabbing rounded-3xl overflow-hidden gradient-border"
+                className="relative w-full max-w-[320px] sm:max-w-[360px] md:max-w-[420px] cursor-grab active:cursor-grabbing rounded-3xl overflow-hidden gradient-border"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-graphite via-void to-ink" />
                 <div className="absolute inset-0 bg-gradient-to-br from-neon/5 to-transparent" />
