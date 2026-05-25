@@ -314,7 +314,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-br from-neon/5 to-transparent" />
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-silver/20 to-transparent" />
-
+ 
                 <div className="relative p-5 sm:p-6">
                   {/* Header */}
                   <div className="flex items-center justify-between mb-4">
