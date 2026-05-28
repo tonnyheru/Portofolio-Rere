@@ -3,28 +3,12 @@ import { useEffect, useRef, useState } from "react";
 
 const jobs = [
   {
-    company: "PT. Animo Resto Primera (Mujigae)",
-    industry: "F&B — Korean Restaurant",
-    role: "Purchasing",
-    period: "Nov 2025 – Feb 2026",
-    current: true,
-    tag: "Terbaru",
-    accentColor: "#7fb3d0",
-    desc: "Mengelola hubungan vendor dan evaluasi supplier untuk menjaga kualitas serta harga kompetitif, serta mendukung pengadaan bahan baku R&D dan sponsorship vendor untuk efisiensi operasional.",
-    highlights: [
-      "Efisiensi biaya pembelian melalui negosiasi harga bahan baku utama",
-      "Meningkatkan fleksibilitas cash flow melalui renegosiasi TOP supplier strategis",
-      "Mengelola hubungan vendor dan evaluasi supplier untuk menjaga kualitas serta harga kompetitif",
-      "Mendukung pengadaan bahan baku R&D dan sponsorship vendor untuk efisiensi operasional",
-    ],
-  },
-  {
     company: "PT. Panca Abadi Nan Jaya",
     industry: "F&B — Multi-brand",
     role: "Inventory Stock Admin",
-    period: "",
-    current: false,
-    tag: "",
+    period: "Apr 2026 – Present",
+    current: true,
+    tag: "Terbaru",
     accentColor: "#7fb3d0",
     desc: "Mengelola administrasi dan pencatatan kedatangan barang untuk operasional multi-brand F&B, serta menjaga akurasi inventory melalui proses data entry, monitoring stok, dan pengecekan dokumen operasional.",
     highlights: [
@@ -32,6 +16,22 @@ const jobs = [
       "Verifikasi transfer goods antar outlet dan gudang guna memastikan kesesuaian data dan stok fisik",
       "Menjaga akurasi inventory melalui data entry, monitoring stok, dan pengecekan dokumen operasional",
       "Meminimalisir potensi selisih stok dan double input melalui proses validasi data secara detail",
+    ],
+  },
+  {
+    company: "PT. Animo Resto Primera (Mujigae)",
+    industry: "F&B — Korean Restaurant",
+    role: "Purchasing",
+    period: "Nov 2025 – Feb 2026",
+    current: false,
+    tag: "",
+    accentColor: "#a8c8e0",
+    desc: "Mengelola hubungan vendor dan evaluasi supplier untuk menjaga kualitas serta harga kompetitif, serta mendukung pengadaan bahan baku R&D dan sponsorship vendor untuk efisiensi operasional.",
+    highlights: [
+      "Efisiensi biaya pembelian melalui negosiasi harga bahan baku utama",
+      "Meningkatkan fleksibilitas cash flow melalui renegosiasi TOP supplier strategis",
+      "Mengelola hubungan vendor dan evaluasi supplier untuk menjaga kualitas serta harga kompetitif",
+      "Mendukung pengadaan bahan baku R&D dan sponsorship vendor untuk efisiensi operasional",
     ],
   },
   {
