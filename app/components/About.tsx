@@ -135,9 +135,9 @@ export default function About() {
                 <span className="text-frost">Cost Controller</span>, atau posisi terkait.
               </p>
               <div className="mt-3 flex flex-wrap gap-2 font-mono text-xs">
-                <a href="mailto:renaraayan@gmail.com" className="text-neon/70 hover:text-neon transition-colors animated-underline">
-                  renaraayan@gmail.com
-                </a>
+              <a href="https://mail.google.com/mail/?view=cm&to=renaraayan@gmail.com" target="_blank" rel="noopener noreferrer" className="text-neon/70 hover:text-neon transition-colors animated-underline">
+                renaraayan@gmail.com
+              </a>
                 <span className="text-silver/30">·</span>
                 <a href="https://wa.me/6285159522095" target="_blank" rel="noopener noreferrer" className="text-neon/70 hover:text-neon transition-colors animated-underline">
                   085159522095

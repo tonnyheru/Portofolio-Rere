@@ -74,7 +74,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="/CV-ATS-RENARAYDWIINDAHSARI2026-1.pdf"
+              href="/Cv.pdf"
               download
               className="flex items-center gap-2 px-5 py-2.5 bg-neon/10 border border-neon/30 text-neon
                 text-sm font-medium rounded-xl hover:bg-neon/20 transition-all duration-300 hover:-translate-y-0.5"
@@ -106,7 +106,7 @@ export default function Navbar() {
                 {link.label}
               </button>
             ))}
-            <a href="/CV-ATS-RENARAYDWIINDAHSARI2026-1.pdf" download
+            <a href="/Cv.pdf" download
               className="block w-full text-center mt-3 px-4 py-3 bg-neon/10 border border-neon/30 text-neon text-sm rounded-xl">
               Download CV
             </a>

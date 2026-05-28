@@ -10,11 +10,28 @@ const jobs = [
     current: true,
     tag: "Terbaru",
     accentColor: "#7fb3d0",
-    desc: "Mengelola siklus pengadaan lengkap mulai dari verifikasi barang sesuai Purchase Order (PO), negosiasi kontrak, harga, dan Term of Payment (TOP) supplier, serta kolaborasi dengan divisi R&D untuk pengadaan sampel bahan baku baru.",
+    desc: "Mengelola hubungan vendor dan evaluasi supplier untuk menjaga kualitas serta harga kompetitif, serta mendukung pengadaan bahan baku R&D dan sponsorship vendor untuk efisiensi operasional.",
     highlights: [
-      "Penghematan IDR 12.500/unit pada kategori bahan baku utama",
-      "Renegosiasi TOP 5+ supplier strategis: dari CASH menjadi 7–30 hari",
-      "Diversifikasi & evaluasi vendor berkala untuk menjaga standar kualitas dan harga kompetitif",
+      "Efisiensi biaya pembelian melalui negosiasi harga bahan baku utama",
+      "Meningkatkan fleksibilitas cash flow melalui renegosiasi TOP supplier strategis",
+      "Mengelola hubungan vendor dan evaluasi supplier untuk menjaga kualitas serta harga kompetitif",
+      "Mendukung pengadaan bahan baku R&D dan sponsorship vendor untuk efisiensi operasional",
+    ],
+  },
+  {
+    company: "PT. Panca Abadi Nan Jaya",
+    industry: "F&B — Multi-brand",
+    role: "Inventory Stock Admin",
+    period: "",
+    current: false,
+    tag: "",
+    accentColor: "#7fb3d0",
+    desc: "Mengelola administrasi dan pencatatan kedatangan barang untuk operasional multi-brand F&B, serta menjaga akurasi inventory melalui proses data entry, monitoring stok, dan pengecekan dokumen operasional.",
+    highlights: [
+      "Mengelola administrasi dan pencatatan kedatangan barang untuk operasional multi-brand F&B",
+      "Verifikasi transfer goods antar outlet dan gudang guna memastikan kesesuaian data dan stok fisik",
+      "Menjaga akurasi inventory melalui data entry, monitoring stok, dan pengecekan dokumen operasional",
+      "Meminimalisir potensi selisih stok dan double input melalui proses validasi data secara detail",
     ],
   },
   {
@@ -25,12 +42,13 @@ const jobs = [
     current: false,
     tag: "",
     accentColor: "#a8c8e0",
-    desc: "Melaksanakan stock opname berkala seluruh divisi, analisis COGS seluruh lini produk, forecasting kebutuhan bahan baku berbasis data historis penjualan, serta digitalisasi sistem monitoring inventori dari tidak rutin menjadi terjadwal dan sistematis.",
+    desc: "Membangun sistem monitoring stok berbasis Google Sheets, meningkatkan kedisiplinan stock opname dan akurasi data persediaan, serta menekan waste dan mengoptimalkan COGS melalui pengawasan penggunaan bahan baku.",
     highlights: [
-      "Digitalisasi inventori berbasis Google Sheets — stock opname lebih terjadwal dan terukur",
-      "Implementasi FEFO — menekan kerugian akibat bahan baku kedaluwarsa",
-      "Optimasi COGS & efisiensi belanja operasional melalui forecasting akurat",
-      "Renegosiasi TOP dengan supplier — meningkatkan fleksibilitas cash flow perusahaan",
+      "Membangun sistem monitoring stok berbasis Google Sheets untuk meningkatkan kontrol inventory",
+      "Meningkatkan kedisiplinan stock opname dan akurasi data persediaan",
+      "Menekan waste dan mengoptimalkan COGS melalui pengawasan penggunaan bahan baku",
+      "Implementasi sistem FEFO guna meminimalisir kerugian bahan baku expired",
+      "Mendukung efisiensi cash flow melalui negosiasi TOP dengan supplier",
     ],
   },
   {
@@ -41,11 +59,11 @@ const jobs = [
     current: false,
     tag: "",
     accentColor: "#8b949e",
-    desc: "Mengelola administrasi & korespondensi perusahaan, entri dan pembaruan data ke sistem internal, dukungan proses rekrutmen, rekapitulasi absensi karyawan, serta pengelolaan laporan arus kas operasional harian.",
+    desc: "Menjalankan administrasi perusahaan dan pengelolaan database internal secara sistematis, menyusun laporan kas operasional project secara rapi dan akurat, serta mengelola dokumentasi perusahaan untuk mendukung kelancaran operasional kantor.",
     highlights: [
-      "Sistem surat-menyurat yang terorganisir dan terdistribusi dengan baik",
-      "Akurasi input dan pembaruan database internal secara berkala",
-      "Rekapitulasi absensi & laporan HR yang akurat",
+      "Menjalankan administrasi perusahaan dan pengelolaan database internal secara sistematis",
+      "Menyusun laporan kas operasional project secara rapi dan akurat",
+      "Mengelola dokumentasi perusahaan untuk mendukung kelancaran operasional kantor",
     ],
   },
   {
@@ -56,12 +74,13 @@ const jobs = [
     current: false,
     tag: "",
     accentColor: "#8b949e",
-    desc: "Stock opname berkala di main kitchen dan seluruh outlet multi-brand, forecasting kebutuhan bahan baku, manajemen vendor & administrasi kontra bon, serta digitalisasi sistem kontrol stok berbasis Google Sheets per outlet.",
+    desc: "Mengelola purchasing multi-outlet dan multi-brand dengan pengendalian stok yang terstruktur, serta meningkatkan efisiensi monitoring stok melalui digitalisasi sistem berbasis Google Sheets.",
     highlights: [
-      "Digitalisasi kontrol stok real-time via Google Sheets untuk semua outlet",
-      "Renegosiasi TOP dengan 10+ supplier mayoritas",
-      "Inisiasi program kemitraan vendor — diskon khusus & pengadaan aset tanpa biaya tambahan",
-      "Penerapan FEFO — menekan kerugian akibat bahan baku kedaluwarsa",
+      "Mengelola purchasing multi-outlet dan multi-brand dengan pengendalian stok yang terstruktur",
+      "Membantu kestabilan operasional outlet melalui forecasting kebutuhan bahan baku",
+      "Digitalisasi sistem monitoring stok berbasis Google Sheets",
+      "Negosiasi supplier untuk meningkatkan fleksibilitas cash flow perusahaan",
+      "Kontrol food costing dan pengadaan strategis untuk efisiensi biaya operasional",
     ],
   },
   {
@@ -72,11 +91,12 @@ const jobs = [
     current: false,
     tag: "",
     accentColor: "#6b7280",
-    desc: "Mengelola administrasi & operasional kantor, surat-menyurat formal, pembaruan data ke sistem internal, dukungan proses rekrutmen melalui wawancara kandidat, serta penyusunan laporan kas operasional harian.",
+    desc: "Mengelola administrasi operasional dan pembaruan data perusahaan secara akurat, mendukung proses rekrutmen awal, serta menyusun laporan kas operasional harian dengan pencatatan yang tertib dan transparan.",
     highlights: [
-      "Pengelolaan siklus surat-menyurat formal perusahaan",
-      "Pelaksanaan wawancara & rekapitulasi data absensi karyawan",
-      "Penyusunan laporan kas operasional harian yang tertib dan akurat",
+      "Mengelola administrasi operasional dan pembaruan data perusahaan secara akurat",
+      "Mendukung proses rekrutmen awal melalui administrasi interview kandidat",
+      "Menyusun laporan kas operasional harian dengan pencatatan yang tertib dan transparan",
+      "Mengelola data absensi karyawan untuk mendukung pelaporan HR",
     ],
   },
   {
@@ -87,11 +107,11 @@ const jobs = [
     current: false,
     tag: "",
     accentColor: "#6b7280",
-    desc: "Memberikan informasi layanan, promosi, dan edukasi kepada pelanggan melalui pengumuman suara, menangani keluhan pelanggan secara solutif, serta memastikan kenyamanan pengalaman belanja di area retail.",
+    desc: "Memberikan pelayanan informasi pelanggan secara komunikatif dan profesional di area retail, serta menangani keluhan pelanggan dengan pendekatan solutif guna menjaga customer satisfaction.",
     highlights: [
-      "Komunikasi publik yang informatif dan profesional",
-      "Penanganan keluhan pelanggan dengan pendekatan solutif",
-      "Pelayanan prima untuk menjaga kepuasan konsumen",
+      "Pelayanan informasi pelanggan secara komunikatif dan profesional di area retail",
+      "Menangani keluhan pelanggan dengan pendekatan solutif",
+      "Mendukung kenyamanan pengalaman belanja melalui pelayanan yang responsif dan informatif",
     ],
   },
   {
@@ -102,11 +122,12 @@ const jobs = [
     current: false,
     tag: "",
     accentColor: "#6b7280",
-    desc: "Mengelola proses pemesanan transportasi dan akomodasi hotel, administrasi keuangan & penerbitan invoice, manajemen dokumentasi operasional, serta membangun hubungan pelanggan jangka panjang.",
+    desc: "Mengelola administrasi reservasi dan invoice pelanggan, menyusun sistem pengarsipan dokumen yang mempermudah pelacakan data, serta menjalin komunikasi pelanggan secara responsif untuk menjaga kualitas layanan perusahaan.",
     highlights: [
-      "Pengelolaan reservasi sistematis untuk multi-pelanggan",
-      "Penyusunan & verifikasi invoice dengan akurasi tinggi",
-      "Membangun loyalitas pelanggan melalui komunikasi yang efektif dan responsif",
+      "Mengelola administrasi reservasi dan invoice pelanggan",
+      "Menyusun sistem pengarsipan dokumen yang mempermudah pelacakan data",
+      "Menjalin komunikasi pelanggan secara responsif untuk menjaga kualitas layanan",
+      "Mendukung kelancaran proses administrasi perjalanan dan akomodasi pelanggan",
     ],
   },
   {
@@ -117,11 +138,12 @@ const jobs = [
     current: false,
     tag: "",
     accentColor: "#6b7280",
-    desc: "Berbagai peran mulai dari customer service & kasir, administrasi gudang produksi, hingga purchasing dan administrasi printing. Mengelola stok bahan baku, pengendalian arus barang dari supplier, serta administrasi keuangan.",
+    desc: "Mengontrol pengadaan bahan baku printing, mengelola administrasi invoice dan penagihan pelanggan, serta menjaga stabilitas stok bahan baku dan barang jadi untuk mendukung operasional produksi.",
     highlights: [
-      "Manajemen stok bahan baku gudang & divisi printing",
-      "Pengendalian arus barang masuk dari supplier sesuai dokumen pengiriman",
-      "Administrasi keuangan, penerbitan invoice & penagihan tepat waktu",
+      "Mengontrol pengadaan bahan baku printing guna menjaga keseimbangan stok dan kelancaran produksi",
+      "Memastikan akurasi penerimaan barang dan pencatatan inventory pada sistem internal",
+      "Menangani administrasi invoice dan penagihan pelanggan secara tertib dan tepat waktu",
+      "Mendukung operasional produksi melalui pengelolaan kebutuhan perusahaan",
     ],
   },
   {
@@ -132,11 +154,12 @@ const jobs = [
     current: false,
     tag: "Awal Karir",
     accentColor: "#6b7280",
-    desc: "Memulai karir profesional dengan mengelola arus barang produksi sesuai SOP, monitoring stok untuk mencegah out-of-stock, serta pelaksanaan stock opname berkala untuk memastikan keselarasan data sistem dengan fisik gudang.",
+    desc: "Menjaga akurasi data stok antara sistem dan fisik gudang melalui stock opname rutin, serta mengontrol arus barang masuk dan keluar agar distribusi produksi berjalan lancar tanpa keterlambatan.",
     highlights: [
-      "Manajemen arus barang masuk & keluar sesuai SOP perusahaan",
-      "Monitoring stok rutin untuk mencegah kekosongan barang (out-of-stock)",
-      "Stock opname berkala — validasi akurasi data sistem vs fisik gudang",
+      "Menjaga akurasi data stok antara sistem dan fisik gudang melalui stock opname rutin",
+      "Mengontrol arus barang masuk dan keluar agar distribusi produksi berjalan lancar",
+      "Monitoring stok secara berkala untuk mencegah kekosongan barang",
+      "Menjalankan administrasi inventory dengan ketelitian untuk meminimalisir selisih stok",
     ],
   },
 ];
@@ -158,12 +181,10 @@ export default function Experience() {
 
   return (
     <section id="experience" ref={ref} className="py-32 relative overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-ink via-void/30 to-ink" />
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-neon/3 blur-[120px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Header */}
         <div className="section-reveal flex items-center gap-4 mb-4">
           <span className="font-mono text-xs text-neon/70 tracking-[0.3em] uppercase"></span>
           <div className="flex-1 h-px bg-gradient-to-r from-neon/30 to-transparent max-w-32" />
@@ -177,15 +198,12 @@ export default function Experience() {
           </p>
         </div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Vertical line */}
           <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-neon/40 via-graphite-2/60 to-transparent hidden md:block" />
 
           <div className="space-y-4">
             {jobs.map((job, i) => (
               <div key={i} className="section-reveal relative" style={{ transitionDelay: `${i * 0.05}s` }}>
-                {/* Timeline dot */}
                 <div className="absolute left-[18px] top-7 w-3.5 h-3.5 rounded-full border-2 hidden md:block z-10"
                   style={{
                     borderColor: job.current ? "#7fb3d0" : "#2d3139",
@@ -193,12 +211,10 @@ export default function Experience() {
                     boxShadow: job.current ? "0 0 12px rgba(127,179,208,0.4)" : "none",
                   }} />
 
-                {/* Card */}
                 <div className="md:ml-16">
                   <button
                     onClick={() => setExpanded(expanded === i ? null : i)}
-                    className="w-full text-left glass rounded-2xl p-6 border border-graphite-2/60 glass-hover transition-all duration-300
-                      hover:border-neon/20 group"
+                    className="w-full text-left glass rounded-2xl p-6 border border-graphite-2/60 glass-hover transition-all duration-300 hover:border-neon/20 group"
                     style={{
                       borderColor: expanded === i ? "rgba(127,179,208,0.2)" : undefined,
                       background: expanded === i ? "rgba(26,29,36,0.8)" : undefined,
@@ -235,7 +251,6 @@ export default function Experience() {
                     </div>
                   </button>
 
-                  {/* Expanded content */}
                   <div className={`overflow-hidden transition-all duration-500 ${expanded === i ? "max-h-96 mt-1" : "max-h-0"}`}>
                     <div className="glass rounded-2xl p-6 border border-graphite-2/40 border-t-0 rounded-t-none -mt-2 pt-6">
                       <p className="font-body text-silver text-sm leading-relaxed mb-5">{job.desc}</p>

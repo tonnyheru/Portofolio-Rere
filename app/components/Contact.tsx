@@ -23,17 +23,6 @@ const contactItems = [
     value: "085159522095",
     href: "https://wa.me/6285159522095",
   },
-  {
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-      </svg>
-    ),
-    label: "Lokasi",
-    value: "Antapani, Bandung",
-    href: "https://www.google.com/maps/place/Jl.+Jati+Wangi+7+No.34,+Antapani+Tengah,+Kec.+Antapani,+Kota+Bandung,+Jawa+Barat+40291/@-6.9160096,107.6602801,17z/data=!3m1!4b1!4m6!3m5!1s0x2e68e7fa00522067:0x23b1cfcc177bb783!8m2!3d-6.9160149!4d107.6628604!16s%2Fg%2F11pkcr6kt2?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D",
-  },
 ];
 
 export default function Contact() {
