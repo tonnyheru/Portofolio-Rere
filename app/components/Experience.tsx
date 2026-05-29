@@ -1,7 +1,26 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-const jobs = [
+type SubRole = {
+  role: string;
+  period: string;
+  highlights: string[];
+};
+
+type Job = {
+  company: string;
+  industry: string;
+  role: string;
+  period: string;
+  current: boolean;
+  tag: string;
+  accentColor: string;
+  desc: string;
+  highlights: string[];
+  subRoles?: SubRole[];
+};
+
+const jobs: Job[] = [
   {
     company: "PT. Panca Abadi Nan Jaya",
     industry: "F&B — Multi-brand",
@@ -123,52 +142,47 @@ const jobs = [
       "Membangun loyalitas pelanggan melalui komunikasi yang efektif dan responsif",
     ],
   },
-{
-    company: "Perdana Photo Group",
-    industry: "Retail Fotografi",
-    role: "Customer Service Official & Cashier",
-    period: "2014 – 2015",
-    current: false,
-    tag: "",
-    accentColor: "#6b7280",
-    desc: "Memberikan pelayanan pelanggan yang responsif, mengelola transaksi dan pesanan, serta menjaga ketersediaan stok toko melalui koordinasi dengan warehouse.",
-    highlights: [
-      "Memberikan pelayanan pelanggan yang responsif untuk mendukung kepuasan konsumen",
-      "Mengelola input transaksi dan pesanan pelanggan secara sistematis",
-      "Membuat laporan kas harian dengan administrasi yang rapi dan akurat",
-      "Menjaga ketersediaan stok toko melalui koordinasi kebutuhan barang dengan warehouse",
-    ],
-  },
   {
     company: "Perdana Photo Group",
     industry: "Retail Fotografi",
-    role: "Administrasi Gudang & Produksi",
-    period: "2015",
+    role: "CS · Admin Gudang & Produksi · Purchasing",
+    period: "2014 – 2017",
     current: false,
     tag: "",
     accentColor: "#6b7280",
-    desc: "Menjaga stabilitas stok bahan baku dan barang jadi, memastikan akurasi penerimaan barang, serta mendukung efisiensi produksi melalui perencanaan kebutuhan stok.",
-    highlights: [
-      "Menjaga stabilitas stok bahan baku dan barang jadi untuk mendukung operasional produksi",
-      "Memastikan akurasi penerimaan barang dan pencatatan inventory pada sistem internal perusahaan",
-      "Mendukung efisiensi produksi melalui perencanaan kebutuhan stok",
-      "Mengurangi potensi selisih inventory melalui pelaksanaan stock opname berkala",
-    ],
-  },
-  {
-    company: "Perdana Photo Group",
-    industry: "Retail Fotografi",
-    role: "Administrasi Printing & Purchasing",
-    period: "2015 – 2017",
-    current: false,
-    tag: "",
-    accentColor: "#6b7280",
-    desc: "Mengontrol pengadaan bahan baku printing, membantu efisiensi penggunaan bahan baku, serta menangani administrasi invoice dan penagihan pelanggan.",
-    highlights: [
-      "Mengontrol pengadaan bahan baku printing guna menjaga keseimbangan stok dan kelancaran produksi",
-      "Membantu efisiensi penggunaan bahan baku melalui pencatatan dan monitoring penggunaan barang",
-      "Menangani administrasi invoice dan penagihan pelanggan secara tertib dan tepat waktu",
-      "Mendukung operasional produksi melalui pengelolaan kebutuhan perusahaan",
+    desc: "",
+    highlights: [],
+    subRoles: [
+      {
+        role: "Customer Service Official & Cashier",
+        period: "2014 – 2015",
+        highlights: [
+          "Memberikan pelayanan pelanggan yang responsif untuk mendukung kepuasan konsumen",
+          "Mengelola input transaksi dan pesanan pelanggan secara sistematis",
+          "Membuat laporan kas harian dengan administrasi yang rapi dan akurat",
+          "Menjaga ketersediaan stok toko melalui koordinasi kebutuhan barang dengan warehouse",
+        ],
+      },
+      {
+        role: "Administrasi Gudang & Produksi",
+        period: "2015",
+        highlights: [
+          "Menjaga stabilitas stok bahan baku dan barang jadi untuk mendukung operasional produksi",
+          "Memastikan akurasi penerimaan barang dan pencatatan inventory pada sistem internal perusahaan",
+          "Mendukung efisiensi produksi melalui perencanaan kebutuhan stok",
+          "Mengurangi potensi selisih inventory melalui pelaksanaan stock opname berkala",
+        ],
+      },
+      {
+        role: "Administrasi Printing & Purchasing",
+        period: "2015 – 2017",
+        highlights: [
+          "Mengontrol pengadaan bahan baku printing guna menjaga keseimbangan stok dan kelancaran produksi",
+          "Membantu efisiensi penggunaan bahan baku melalui pencatatan dan monitoring penggunaan barang",
+          "Menangani administrasi invoice dan penagihan pelanggan secara tertib dan tepat waktu",
+          "Mendukung operasional produksi melalui pengelolaan kebutuhan perusahaan",
+        ],
+      },
     ],
   },
   {
@@ -228,12 +242,14 @@ export default function Experience() {
           <div className="space-y-4">
             {jobs.map((job, i) => (
               <div key={i} className="section-reveal relative" style={{ transitionDelay: `${i * 0.05}s` }}>
-                <div className="absolute left-[18px] top-7 w-3.5 h-3.5 rounded-full border-2 hidden md:block z-10"
+                <div
+                  className="absolute left-[18px] top-7 w-3.5 h-3.5 rounded-full border-2 hidden md:block z-10"
                   style={{
                     borderColor: job.current ? "#7fb3d0" : "#2d3139",
                     background: job.current ? "#7fb3d0" : "#1a1d24",
                     boxShadow: job.current ? "0 0 12px rgba(127,179,208,0.4)" : "none",
-                  }} />
+                  }}
+                />
 
                 <div className="md:ml-16">
                   <button
@@ -251,12 +267,14 @@ export default function Experience() {
                             {job.role}
                           </h3>
                           {job.tag && (
-                            <span className="font-mono text-[10px] px-2 py-0.5 rounded-full"
+                            <span
+                              className="font-mono text-[10px] px-2 py-0.5 rounded-full"
                               style={{
                                 background: job.current ? "rgba(127,179,208,0.1)" : "rgba(139,148,158,0.1)",
                                 color: job.current ? "#7fb3d0" : "#8b949e",
                                 border: `1px solid ${job.current ? "rgba(127,179,208,0.2)" : "rgba(139,148,158,0.2)"}`,
-                              }}>
+                              }}
+                            >
                               {job.tag}
                             </span>
                           )}
@@ -268,24 +286,67 @@ export default function Experience() {
                         <span className="font-mono text-xs text-silver/50">{job.period}</span>
                         <svg
                           className={`w-4 h-4 text-silver/40 transition-transform duration-300 ${expanded === i ? "rotate-180" : ""}`}
-                          fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+                        >
                           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
                       </div>
                     </div>
                   </button>
 
-                  <div className={`overflow-hidden transition-all duration-500 ${expanded === i ? "max-h-96 mt-1" : "max-h-0"}`}>
+                  {/* Expanded content */}
+                  <div className={`overflow-hidden transition-all duration-500 ${expanded === i ? "max-h-[900px] mt-1" : "max-h-0"}`}>
                     <div className="glass rounded-2xl p-6 border border-graphite-2/40 border-t-0 rounded-t-none -mt-2 pt-6">
-                      <p className="font-body text-silver text-sm leading-relaxed mb-5">{job.desc}</p>
-                      <div className="space-y-2">
-                        {job.highlights.map((h, j) => (
-                          <div key={j} className="flex items-start gap-3">
-                            <div className="w-1 h-1 rounded-full bg-neon/60 mt-2 flex-shrink-0" />
-                            <p className="font-body text-silver-2 text-sm">{h}</p>
+
+                      {/* Regular job: desc + highlights */}
+                      {!job.subRoles && (
+                        <>
+                          <p className="font-body text-silver text-sm leading-relaxed mb-5">{job.desc}</p>
+                          <div className="space-y-2">
+                            {job.highlights.map((h, j) => (
+                              <div key={j} className="flex items-start gap-3">
+                                <div className="w-1 h-1 rounded-full bg-neon/60 mt-2 flex-shrink-0" />
+                                <p className="font-body text-silver-2 text-sm">{h}</p>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        </>
+                      )}
+
+                      {/* Multi-role job: sub-roles */}
+                      {job.subRoles && (
+                        <div className="space-y-5">
+                          {job.subRoles.map((sub, k) => (
+                            <div key={k}>
+                              {/* Sub-role header */}
+                              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <h4 className="font-body font-semibold text-frost/90 text-sm">
+                                  {sub.role}
+                                </h4>
+                                <span className="font-mono text-[10px] text-silver/40 bg-graphite-2/30 px-2 py-0.5 rounded-full border border-graphite-2/40">
+                                  {sub.period}
+                                </span>
+                              </div>
+
+                              {/* Sub-role highlights */}
+                              <div className="space-y-2 pl-3 border-l border-graphite-2/50">
+                                {sub.highlights.map((h, j) => (
+                                  <div key={j} className="flex items-start gap-3">
+                                    <div className="w-1 h-1 rounded-full bg-neon/40 mt-2 flex-shrink-0" />
+                                    <p className="font-body text-silver-2 text-sm">{h}</p>
+                                  </div>
+                                ))}
+                              </div>
+
+                              {/* Divider between sub-roles, not after last */}
+                              {k < (job.subRoles?.length ?? 0) - 1 && (
+                                <div className="mt-5 h-px bg-graphite-2/40" />
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
                     </div>
                   </div>
                 </div>
