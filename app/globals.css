@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+@font-face {
+  font-family: 'Hugheid';
+  src: url('/fonts/Hugheid.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SimpleNotes';
+  src: url('/fonts/SimpleNotes.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SimplyOlive';
+  src: url('/fonts/SimplyOlive.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-syne:       'Syne', sans-serif;
+  --font-outfit:     'Outfit', sans-serif;
+  --font-jetbrains:  'JetBrains Mono', monospace;
+}
+
+:root {
+  --font-syne:        'Syne', sans-serif;
+  --font-outfit:      'Outfit', sans-serif;
+  --font-jetbrains:   'JetBrains Mono', monospace;
+  --font-simplyolive: 'SimplyOlive', cursive;  /* ← tambah ini */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #30363d #0d1117;
+}
+
+body {
+  background-color: #0d1117;
+  background-image:
+    radial-gradient(circle, rgba(148,163,184,0.18) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+  background-attachment: fixed;
+  color: #e2e8f0;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Gradient overlay — abu cerah kiri atas + teal kanan bawah (z-index 1) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at -10% -10%, rgba(203,213,225,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 55% at 110% 110%, rgba(45,212,191,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 0%,   rgba(148,163,184,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 35% at 0% 100%,   rgba(45,212,191,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Semua konten di atas gradient */
+main, header, footer { position: relative; z-index: 2; }
+nav { position: fixed; z-index: 1000; }
+section { position: relative; z-index: 2; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0d1117; }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 99px; }
+
+::selection { background: rgba(45,212,191,0.2); color: #f0f6fc; }
+
+/* Section reveal animation */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.section-reveal.visible { opacity: 1; transform: translateY(0); }
+.section-reveal.delay-1 { transition-delay: 0.1s; }
+.section-reveal.delay-2 { transition-delay: 0.2s; }
+.section-reveal.delay-3 { transition-delay: 0.3s; }
+.section-reveal.delay-4 { transition-delay: 0.4s; }
+.section-reveal.delay-5 { transition-delay: 0.5s; }
+
+/* Glassmorphism card */
+.glass {
+  background: rgba(22, 27, 34, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.glass-hover:hover {
+  background: rgba(33, 38, 45, 0.8);
+  border-color: rgba(45, 212, 191, 0.2);
+  box-shadow: 0 8px 40px rgba(13, 148, 136, 0.08), 0 0 0 1px rgba(45, 212, 191, 0.08);
+}
+
+/* Teal glow text */
+.glow-text {
+  text-shadow: 0 0 30px rgba(45, 212, 191, 0.4);
+}
+
+/* Teal border glow */
+.glow-border {
+  box-shadow: 0 0 0 1px rgba(45, 212, 191, 0.15), 0 0 30px rgba(13, 148, 136, 0.08);
+}
+
+/* Gradient border */
+.gradient-border { position: relative; }
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(45,212,191,0.3), transparent, rgba(45,212,191,0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Hover lift */
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(45,212,191,0.1);
+}
+
+/* Animated underline */
+.animated-underline { position: relative; }
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #2dd4bf, #0d9488);
+  transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.animated-underline:hover::after { width: 100%; }
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148,163,184,0.15), transparent);
+}
+
+/* Custom cursor */
+#cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: #2dd4bf;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+  transform: translate(-50%, -50%);
+}
+#cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(45, 212, 191, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), width 0.3s ease, height 0.3s ease, opacity 0.2s ease;
+  transform: translate(-50%, -50%);
+}
+#cursor-ring.hovering {
+  width: 60px;
+  height: 60px;
+  border-color: rgba(45, 212, 191, 0.2);
+}
+
+/* Magnetic button */
+.magnetic-btn {
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes borderSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes fadeUpStagger {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.stagger-item {
+  opacity: 0;
+  animation: fadeUpStagger 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+@keyframes swingCard {
+  0%, 100% { transform: rotate(-2deg) translateX(-2px); }
+  50%       { transform: rotate(2deg) translateX(2px); }
+}
+
+@keyframes lineGrow {
+  from { height: 0; }
+  to   { height: 100%; }
+}
+
+.timeline-line-anim {
+  animation: lineGrow 1.5s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0);  opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.5; }
+}
+
+@keyframes nameShine {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+@keyframes nameColorShift {
+  0%   { color: #2dd4bf; }
+  25%  { color: #059669; }
+  50%  { color: #0d9488; }
+  75%  { color: #34d399; }
+  100% { color: #2dd4bf; }
+}
+
+html.light-mode .name-color-anim {
+  animation: nameColorShiftLight 6s ease infinite !important;
+}
+
+@keyframes nameColorShiftLight {
+  0%   { color: #0d9488; }
+  25%  { color: #065f46; }
+  50%  { color: #0f766e; }
+  75%  { color: #047857; }
+  100% { color: #0d9488; }
+}
+
+/* ── Floating Particles ─────────────────────────────────────────────────── */
+.particles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: floatParticle linear infinite;
+  opacity: 0;
+}
+
+@keyframes floatParticle {
+  0%   { transform: translateY(100vh) translateX(0px) scale(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-10vh) translateX(var(--drift)) scale(1); opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LIGHT MODE — Proposal B "Warm Cream"
+   Ganti seluruh blok /* ── Light Mode ── */ di globals.css Anda
+   dengan blok ini (dari /* ── Light Mode ── */ sampai akhir file)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Light Mode ─────────────────────────────────────────────────────────── */
+
+/* Base body */
+html.light-mode body {
+  background-color: #fffdf7;
+  background-image:
+    radial-gradient(circle, rgba(180,130,40,0.07) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+  color: #1c1a14;
+}
+
+html.light-mode body::before {
+  background:
+    radial-gradient(ellipse 70% 60% at -10% -10%, rgba(13,148,136,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 55% at 110% 110%, rgba(180,130,40,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 100% 0%,   rgba(13,148,136,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 25% at 0% 100%,   rgba(180,130,40,0.04) 0%, transparent 50%);
+  z-index: 0;
+}
+
+/* Scrollbar */
+html.light-mode { scrollbar-color: #b45309 #fffdf7; }
+html.light-mode ::-webkit-scrollbar-track { background: #fffdf7; }
+html.light-mode ::-webkit-scrollbar-thumb { background: #b45309; border-radius: 99px; }
+
+/* Selection */
+html.light-mode ::selection { background: rgba(180,130,40,0.18); color: #1c1a14; }
+
+/* ── Navbar ── */
+html.light-mode nav {
+  background: rgba(255,253,247,0.97) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(180,130,40,0.15) !important;
+  box-shadow: 0 1px 12px rgba(180,130,40,0.07) !important;
+}
+
+html.light-mode nav span,
+html.light-mode nav button,
+html.light-mode nav a {
+  color: #44403c !important;
+}
+
+html.light-mode nav .text-neon,
+html.light-mode nav [class*="text-neon"] {
+  color: #0d9488 !important;
+}
+
+html.light-mode nav [class*="text-silver"],
+html.light-mode nav [class*="text-frost"] {
+  color: #44403c !important;
+}
+
+html.light-mode nav [class*="text-gray-400"],
+html.light-mode nav [class*="text-gray-500"],
+html.light-mode nav [class*="text-gray-600"] {
+  color: #57534e !important;
+}
+
+/* ── Glass cards ── */
+html.light-mode .glass {
+  background: rgba(255,254,249,0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  border-color: rgba(180,130,40,0.13) !important;
+  box-shadow: 0 2px 16px rgba(180,130,40,0.06) !important;
+}
+
+html.light-mode .glass-hover:hover {
+  background: rgba(255,254,249,0.98) !important;
+  border-color: rgba(13,148,136,0.3) !important;
+  box-shadow: 0 8px 32px rgba(13,148,136,0.1), 0 0 0 1px rgba(13,148,136,0.12) !important;
+}
+
+/* ── Text colors ── */
+html.light-mode .text-frost    { color: #1c1a14 !important; }
+html.light-mode .text-silver-2 { color: #44403c !important; }
+html.light-mode .text-silver   { color: #57534e !important; }
+
+html.light-mode [class*="text-silver/40"],
+html.light-mode [class*="text-silver/50"],
+html.light-mode [class*="text-silver/30"] { color: #78716c !important; }
+
+/* Neon/teal tetap vibrant */
+html.light-mode .text-neon   { color: #0d9488 !important; }
+html.light-mode .text-neon-2 { color: #0f766e !important; }
+
+/* ── Headings ── */
+html.light-mode h1,
+html.light-mode h2,
+html.light-mode h3 { color: #1c1a14; }
+
+/* ── Section backgrounds ── */
+html.light-mode section,
+html.light-mode [class*="bg-ink"],
+html.light-mode [class*="bg-void"],
+html.light-mode [class*="bg-graphite"] {
+  background-color: transparent !important;
+}
+
+html.light-mode [class*="bg-gradient-to"] {
+  background: transparent !important;
+}
+
+html.light-mode #home    { background: linear-gradient(135deg, #fffdf7 0%, #f0fdf9 60%, #fff8e7 100%) !important; }
+html.light-mode #about   { background: linear-gradient(180deg, #fffdf7 0%, #f0fdf9 100%) !important; }
+html.light-mode #skills  { background: linear-gradient(180deg, #fffef2 0%, #fffdf7 100%) !important; }
+html.light-mode #experience { background: linear-gradient(180deg, #fffdf7 0%, #fffef2 100%) !important; }
+html.light-mode #contact { background: linear-gradient(180deg, #f0fdf9 0%, #fffdf7 100%) !important; }
+html.light-mode footer   { background: #fff8e7 !important; border-top-color: rgba(180,130,40,0.15) !important; }
+
+/* ── Borders ── */
+html.light-mode [class*="border-graphite-2"] {
+  border-color: rgba(180,130,40,0.12) !important;
+}
+
+/* ── Buttons & badges ── */
+html.light-mode [class*="bg-neon/10"] {
+  background: rgba(13,148,136,0.07) !important;
+}
+html.light-mode [class*="border-neon/"] {
+  border-color: rgba(13,148,136,0.22) !important;
+}
+
+/* Badge "available" */
+html.light-mode [class*="border-emerald-500"] {
+  border-color: rgba(16,185,129,0.35) !important;
+}
+
+/* ── Section label (font-mono uppercase kecil di atas heading) ── */
+html.light-mode span.font-mono[class*="text-neon"],
+html.light-mode .font-mono.text-neon\/60,
+html.light-mode .font-mono.text-neon\/70,
+html.light-mode .font-mono.text-neon\/80 {
+  color: #b45309 !important; /* amber untuk label section */
+}
+
+/* ── Skill chips / marquee tags ── */
+html.light-mode span.font-mono.rounded-full {
+  background: #fef9ee !important;
+  border-color: rgba(180,130,40,0.2) !important;
+  color: #44403c !important;
+}
+
+/* ── Experience cards — border kiri amber ── */
+html.light-mode .timeline-line-anim,
+html.light-mode [class*="bg-neon"] {
+  background-color: #b45309 !important;
+}
+
+/* ── Date/period badges di experience ── */
+html.light-mode [class*="text-silver/40"].font-mono,
+html.light-mode .font-mono[class*="text-silver"] {
+  color: #92400e !important;
+}
+
+/* ── Mono text ── */
+html.light-mode .font-mono { color: #57534e; }
+html.light-mode .font-mono.text-neon,
+html.light-mode .font-mono.text-neon\/70,
+html.light-mode .font-mono.text-neon\/80 { color: #b45309 !important; }
+
+/* ── Gradient text / decorative lines ── */
+html.light-mode .bg-gradient-to-r.from-transparent { background: transparent !important; }
+
+/* Line aksen di samping section label — ganti ke amber */
+html.light-mode [class*="bg-gradient-to-r"][class*="from-neon"] {
+  background: linear-gradient(to right, rgba(180,130,40,0.3), transparent) !important;
+}
+
+/* ── Orbs & glows — redup di light ── */
+html.light-mode .animate-pulse-glow,
+html.light-mode [class*="blur-["] { opacity: 0.1 !important; }
+
+/* ── Scrollbar indicator ── */
+html.light-mode .bg-gradient-to-b { background: transparent !important; }
+
+/* ── Form inputs ── */
+html.light-mode input,
+html.light-mode textarea {
+  background: rgba(255,254,249,0.9) !important;
+  border-color: rgba(180,130,40,0.2) !important;
+  color: #1c1a14 !important;
+}
+html.light-mode input::placeholder,
+html.light-mode textarea::placeholder { color: #a8a29e !important; }
+html.light-mode input:focus,
+html.light-mode textarea:focus {
+  border-color: rgba(13,148,136,0.45) !important;
+  box-shadow: 0 0 0 3px rgba(13,148,136,0.07) !important;
+}
+
+/* ── ID Card ── */
+html.light-mode .gradient-border .absolute.inset-0 {
+  background: linear-gradient(135deg, #fffef9 0%, #f0fdf9 100%) !important;
+}
+
+/* ── Timeline dot ── */
+html.light-mode .absolute.rounded-full[style*="background: #1a1d24"] {
+  background: #fef3c7 !important;
+  border-color: rgba(180,130,40,0.3) !important;
+}
+
+/* ── Hero section ── */
+html.light-mode #home .absolute.inset-0 { opacity: 0.2 !important; }
+
+/* ── Name color animation — warm amber-teal di light ── */
+html.light-mode .name-color-anim {
+  animation: nameColorShiftWarm 6s ease infinite !important;
+}
+
+@keyframes nameColorShiftWarm {
+  0%   { color: #0d9488; }
+  25%  { color: #b45309; }
+  50%  { color: #0f766e; }
+  75%  { color: #92400e; }
+  100% { color: #0d9488; }
+}
