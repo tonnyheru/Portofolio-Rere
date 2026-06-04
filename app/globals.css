@@ -29,12 +29,6 @@
 @tailwind utilities;
 
 :root {
-  --font-syne:       'Syne', sans-serif;
-  --font-outfit:     'Outfit', sans-serif;
-  --font-jetbrains:  'JetBrains Mono', monospace;
-}
-
-:root {
   --font-syne:        'Syne', sans-serif;
   --font-outfit:      'Outfit', sans-serif;
   --font-jetbrains:   'JetBrains Mono', monospace;
@@ -276,11 +270,14 @@ html.light-mode .name-color-anim {
   opacity: 0;
 }
 
-@keyframes floatParticle {
-  0%   { transform: translateY(100vh) translateX(0px) scale(0); opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 0.6; }
-  100% { transform: translateY(-10vh) translateX(var(--drift)) scale(1); opacity: 0; }
+@keyframes floatOrb {
+  0%   { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1.15) translateY(-20px); }
+}
+
+@keyframes floatOrbParticle {
+  0%   { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+  100% { transform: translateY(-25px) translateX(8px); opacity: 0; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════

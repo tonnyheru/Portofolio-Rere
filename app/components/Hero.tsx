@@ -288,7 +288,7 @@ export default function Hero() {
             height: p.size,
             background: "#fff",
             opacity: p.opacity,
-            animation: `floatParticle ${p.duration}s ease-in-out ${p.delay}s infinite alternate`,
+            animation: `floatOrbParticle ${p.duration}s ease-in-out ${p.delay}s infinite alternate`,
           }}
         />
       ))}
@@ -721,18 +721,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      {/* ─── keyframes injected via style tag ─── */}
-      <style jsx global>{`
-        @keyframes floatOrb {
-          0%   { transform: translate(-50%, -50%) scale(1); }
-          100% { transform: translate(-50%, -50%) scale(1.15) translateY(-20px); }
-        }
-        @keyframes floatParticle {
-          0%   { transform: translateY(0px) translateX(0px); opacity: var(--op, 0.2); }
-          100% { transform: translateY(-25px) translateX(8px); opacity: 0; }
-        }
-      `}</style>
     </section>
   );
 }
