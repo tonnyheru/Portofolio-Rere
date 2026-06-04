@@ -32,7 +32,7 @@
   --font-syne:        'Syne', sans-serif;
   --font-outfit:      'Outfit', sans-serif;
   --font-jetbrains:   'JetBrains Mono', monospace;
-  --font-simplyolive: 'SimplyOlive', cursive;  /* ← tambah ini */
+  --font-simplyolive: 'SimplyOlive', cursive;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -55,7 +55,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Gradient overlay — abu cerah kiri atas + teal kanan bawah (z-index 1) */
+/* Gradient overlay */
 body::before {
   content: '';
   position: fixed;
@@ -254,7 +254,7 @@ html.light-mode .name-color-anim {
   100% { color: #0d9488; }
 }
 
-/* ── Floating Particles ─────────────────────────────────────────────────── */
+/* ── Floating Particles ── */
 .particles-container {
   position: fixed;
   inset: 0;
@@ -270,6 +270,13 @@ html.light-mode .name-color-anim {
   opacity: 0;
 }
 
+@keyframes floatParticle {
+  0%   { transform: translateY(100vh) translateX(0px) scale(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-10vh) translateX(var(--drift)) scale(1); opacity: 0; }
+}
+
 @keyframes floatOrb {
   0%   { transform: translate(-50%, -50%) scale(1); }
   100% { transform: translate(-50%, -50%) scale(1.15) translateY(-20px); }
@@ -280,15 +287,8 @@ html.light-mode .name-color-anim {
   100% { transform: translateY(-25px) translateX(8px); opacity: 0; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════════
-   LIGHT MODE — Proposal B "Warm Cream"
-   Ganti seluruh blok /* ── Light Mode ── */ di globals.css Anda
-   dengan blok ini (dari /* ── Light Mode ── */ sampai akhir file)
-   ═══════════════════════════════════════════════════════════════════════ */
+/* ── Light Mode ── */
 
-/* ── Light Mode ─────────────────────────────────────────────────────────── */
-
-/* Base body */
 html.light-mode body {
   background-color: #fffdf7;
   background-image:
@@ -306,15 +306,13 @@ html.light-mode body::before {
   z-index: 0;
 }
 
-/* Scrollbar */
 html.light-mode { scrollbar-color: #b45309 #fffdf7; }
 html.light-mode ::-webkit-scrollbar-track { background: #fffdf7; }
 html.light-mode ::-webkit-scrollbar-thumb { background: #b45309; border-radius: 99px; }
 
-/* Selection */
 html.light-mode ::selection { background: rgba(180,130,40,0.18); color: #1c1a14; }
 
-/* ── Navbar ── */
+/* Navbar */
 html.light-mode nav {
   background: rgba(255,253,247,0.97) !important;
   backdrop-filter: blur(20px) !important;
@@ -344,7 +342,7 @@ html.light-mode nav [class*="text-gray-600"] {
   color: #57534e !important;
 }
 
-/* ── Glass cards ── */
+/* Glass cards */
 html.light-mode .glass {
   background: rgba(255,254,249,0.85) !important;
   backdrop-filter: blur(16px) !important;
@@ -358,25 +356,22 @@ html.light-mode .glass-hover:hover {
   box-shadow: 0 8px 32px rgba(13,148,136,0.1), 0 0 0 1px rgba(13,148,136,0.12) !important;
 }
 
-/* ── Text colors ── */
+/* Text colors */
 html.light-mode .text-frost    { color: #1c1a14 !important; }
 html.light-mode .text-silver-2 { color: #44403c !important; }
 html.light-mode .text-silver   { color: #57534e !important; }
+html.light-mode [class*="text-silver"] { color: #78716c !important; }
 
-html.light-mode [class*="text-silver/40"],
-html.light-mode [class*="text-silver/50"],
-html.light-mode [class*="text-silver/30"] { color: #78716c !important; }
-
-/* Neon/teal tetap vibrant */
+/* Neon/teal */
 html.light-mode .text-neon   { color: #0d9488 !important; }
 html.light-mode .text-neon-2 { color: #0f766e !important; }
 
-/* ── Headings ── */
+/* Headings */
 html.light-mode h1,
 html.light-mode h2,
 html.light-mode h3 { color: #1c1a14; }
 
-/* ── Section backgrounds ── */
+/* Section backgrounds */
 html.light-mode section,
 html.light-mode [class*="bg-ink"],
 html.light-mode [class*="bg-void"],
@@ -388,80 +383,65 @@ html.light-mode [class*="bg-gradient-to"] {
   background: transparent !important;
 }
 
-html.light-mode #home    { background: linear-gradient(135deg, #fffdf7 0%, #f0fdf9 60%, #fff8e7 100%) !important; }
-html.light-mode #about   { background: linear-gradient(180deg, #fffdf7 0%, #f0fdf9 100%) !important; }
-html.light-mode #skills  { background: linear-gradient(180deg, #fffef2 0%, #fffdf7 100%) !important; }
+html.light-mode #home       { background: linear-gradient(135deg, #fffdf7 0%, #f0fdf9 60%, #fff8e7 100%) !important; }
+html.light-mode #about      { background: linear-gradient(180deg, #fffdf7 0%, #f0fdf9 100%) !important; }
+html.light-mode #skills     { background: linear-gradient(180deg, #fffef2 0%, #fffdf7 100%) !important; }
 html.light-mode #experience { background: linear-gradient(180deg, #fffdf7 0%, #fffef2 100%) !important; }
-html.light-mode #contact { background: linear-gradient(180deg, #f0fdf9 0%, #fffdf7 100%) !important; }
-html.light-mode footer   { background: #fff8e7 !important; border-top-color: rgba(180,130,40,0.15) !important; }
+html.light-mode #contact    { background: linear-gradient(180deg, #f0fdf9 0%, #fffdf7 100%) !important; }
+html.light-mode footer      { background: #fff8e7 !important; border-top-color: rgba(180,130,40,0.15) !important; }
 
-/* ── Borders ── */
+/* Borders */
 html.light-mode [class*="border-graphite-2"] {
   border-color: rgba(180,130,40,0.12) !important;
 }
 
-/* ── Buttons & badges ── */
-html.light-mode [class*="bg-neon/10"] {
+/* Buttons & badges */
+html.light-mode [class*="bg-neon"] {
   background: rgba(13,148,136,0.07) !important;
 }
-html.light-mode [class*="border-neon/"] {
+html.light-mode [class*="border-neon"] {
   border-color: rgba(13,148,136,0.22) !important;
 }
 
-/* Badge "available" */
 html.light-mode [class*="border-emerald-500"] {
   border-color: rgba(16,185,129,0.35) !important;
 }
 
-/* ── Section label (font-mono uppercase kecil di atas heading) ── */
-html.light-mode span.font-mono[class*="text-neon"],
-html.light-mode .font-mono.text-neon\/60,
-html.light-mode .font-mono.text-neon\/70,
-html.light-mode .font-mono.text-neon\/80 {
-  color: #b45309 !important; /* amber untuk label section */
+/* Section label mono */
+html.light-mode span.font-mono[class*="text-neon"] {
+  color: #b45309 !important;
 }
 
-/* ── Skill chips / marquee tags ── */
+/* Skill chips / marquee tags */
 html.light-mode span.font-mono.rounded-full {
   background: #fef9ee !important;
   border-color: rgba(180,130,40,0.2) !important;
   color: #44403c !important;
 }
 
-/* ── Experience cards — border kiri amber ── */
-html.light-mode .timeline-line-anim,
-html.light-mode [class*="bg-neon"] {
+/* Experience timeline */
+html.light-mode .timeline-line-anim {
   background-color: #b45309 !important;
 }
 
-/* ── Date/period badges di experience ── */
-html.light-mode [class*="text-silver/40"].font-mono,
-html.light-mode .font-mono[class*="text-silver"] {
-  color: #92400e !important;
-}
-
-/* ── Mono text ── */
+/* Mono text */
 html.light-mode .font-mono { color: #57534e; }
-html.light-mode .font-mono.text-neon,
-html.light-mode .font-mono.text-neon\/70,
-html.light-mode .font-mono.text-neon\/80 { color: #b45309 !important; }
+html.light-mode .font-mono.text-neon { color: #b45309 !important; }
 
-/* ── Gradient text / decorative lines ── */
+/* Decorative lines */
 html.light-mode .bg-gradient-to-r.from-transparent { background: transparent !important; }
 
-/* Line aksen di samping section label — ganti ke amber */
 html.light-mode [class*="bg-gradient-to-r"][class*="from-neon"] {
   background: linear-gradient(to right, rgba(180,130,40,0.3), transparent) !important;
 }
 
-/* ── Orbs & glows — redup di light ── */
-html.light-mode .animate-pulse-glow,
-html.light-mode [class*="blur-["] { opacity: 0.1 !important; }
+/* Orbs & glows */
+html.light-mode .animate-pulse-glow { opacity: 0.1 !important; }
 
-/* ── Scrollbar indicator ── */
+/* Scrollbar indicator */
 html.light-mode .bg-gradient-to-b { background: transparent !important; }
 
-/* ── Form inputs ── */
+/* Form inputs */
 html.light-mode input,
 html.light-mode textarea {
   background: rgba(255,254,249,0.9) !important;
@@ -476,21 +456,21 @@ html.light-mode textarea:focus {
   box-shadow: 0 0 0 3px rgba(13,148,136,0.07) !important;
 }
 
-/* ── ID Card ── */
+/* ID Card */
 html.light-mode .gradient-border .absolute.inset-0 {
   background: linear-gradient(135deg, #fffef9 0%, #f0fdf9 100%) !important;
 }
 
-/* ── Timeline dot ── */
+/* Timeline dot */
 html.light-mode .absolute.rounded-full[style*="background: #1a1d24"] {
   background: #fef3c7 !important;
   border-color: rgba(180,130,40,0.3) !important;
 }
 
-/* ── Hero section ── */
+/* Hero section */
 html.light-mode #home .absolute.inset-0 { opacity: 0.2 !important; }
 
-/* ── Name color animation — warm amber-teal di light ── */
+/* Name color animation */
 html.light-mode .name-color-anim {
   animation: nameColorShiftWarm 6s ease infinite !important;
 }
