@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "../context/LanguageContext";
+import { useTheme } from "../components/ThemeContext";
 import { t } from "../translations";
 
 type SubRole = {
@@ -206,6 +207,8 @@ const jobs: Job[] = [
 
 export default function Experience() {
   const { lang } = useLang();
+  const { theme } = useTheme();
+  const isLight = theme === "light";
   const ref = useRef<HTMLDivElement>(null);
   const [expanded, setExpanded] = useState<number | null>(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -230,10 +233,119 @@ export default function Experience() {
 
   const totalYears = new Date().getFullYear() - 2013;
 
+  // ── Color tokens berdasarkan tema ──
+  const cardBg = (isOpen: boolean, isHovered: boolean) => {
+    if (isLight) {
+      if (isOpen)     return "rgba(255,253,248,0.97)";
+      if (isHovered)  return "rgba(255,252,244,0.95)";
+      return "rgba(255,252,244,0.88)";
+    }
+    if (isOpen)     return "rgba(22,25,32,0.95)";
+    if (isHovered)  return "rgba(22,25,32,0.8)";
+    return "rgba(16,18,24,0.6)";
+  };
+
+  const cardBorder = (isOpen: boolean, isHovered: boolean) => {
+    if (isLight) {
+      if (isOpen)    return "rgba(13,148,136,0.3)";
+      if (isHovered) return "rgba(13,148,136,0.18)";
+      return "rgba(180,130,40,0.15)";
+    }
+    if (isOpen)    return "rgba(45,212,191,0.25)";
+    if (isHovered) return "rgba(45,212,191,0.12)";
+    return "rgba(45,49,57,0.5)";
+  };
+
+  const cardShadow = (isOpen: boolean) => {
+    if (isLight) {
+      return isOpen
+        ? "0 4px 32px rgba(13,148,136,0.1), 0 1px 0 rgba(255,255,255,0.9) inset"
+        : "0 2px 12px rgba(180,130,40,0.06), 0 1px 0 rgba(255,255,255,0.85) inset";
+    }
+    return isOpen
+      ? "0 4px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)"
+      : "0 2px 20px rgba(0,0,0,0.2)";
+  };
+
+  const expandedPanelBg = isLight
+    ? "linear-gradient(180deg, rgba(255,252,244,0.99) 0%, rgba(255,250,240,0.99) 100%)"
+    : "linear-gradient(180deg, rgba(22,25,32,0.97) 0%, rgba(16,18,24,0.97) 100%)";
+
+  const expandedPanelBorder = isLight
+    ? "rgba(13,148,136,0.18)"
+    : "rgba(45,212,191,0.15)";
+
+  const industryChipBg = isLight
+    ? "rgba(254,243,216,0.8)"
+    : "rgba(45,49,57,0.4)";
+
+  const industryChipColor = isLight ? "#7c4a03" : undefined;
+
+  const periodChipBg = isLight
+    ? "rgba(255,249,236,0.9)"
+    : "rgba(45,49,57,0.35)";
+
+  const periodChipColor = isLight ? "#3c3830" : undefined;
+
+  const chevronBg = (isOpen: boolean) => isLight
+    ? (isOpen ? "rgba(13,148,136,0.12)" : "rgba(180,130,40,0.08)")
+    : (isOpen ? "rgba(45,212,191,0.15)" : "rgba(45,49,57,0.4)");
+
+  const chevronBorder = (isOpen: boolean) => isLight
+    ? (isOpen ? "rgba(13,148,136,0.3)" : "rgba(180,130,40,0.2)")
+    : (isOpen ? "rgba(45,212,191,0.3)" : "rgba(45,49,57,0.6)");
+
+  const chevronColor = (isOpen: boolean) => isLight
+    ? (isOpen ? "#0d9488" : "#78716c")
+    : (isOpen ? "#2dd4bf" : "#8b949e");
+
+  const dotBg = (job: Job, isOpen: boolean) => {
+    if (isLight) {
+      return job.current ? "#0d9488" : isOpen ? "rgba(13,148,136,0.15)" : "#e8e4dc";
+    }
+    return job.current ? "#2dd4bf" : isOpen ? "rgba(45,212,191,0.15)" : "#1a1d24";
+  };
+
+  const dotBorder = (job: Job, isOpen: boolean) => {
+    if (isLight) {
+      return job.current ? "#0d9488" : isOpen ? "rgba(13,148,136,0.5)" : "rgba(180,130,40,0.3)";
+    }
+    return job.current ? "#2dd4bf" : isOpen ? "rgba(45,212,191,0.5)" : "#2d3139";
+  };
+
+  const dotShadow = (job: Job, isOpen: boolean) => {
+    if (isLight) {
+      return job.current
+        ? "0 0 12px rgba(13,148,136,0.5), 0 0 30px rgba(13,148,136,0.15)"
+        : isOpen ? "0 0 6px rgba(13,148,136,0.2)" : "none";
+    }
+    return job.current
+      ? "0 0 16px rgba(45,212,191,0.6), 0 0 40px rgba(45,212,191,0.2)"
+      : isOpen ? "0 0 8px rgba(45,212,191,0.3)" : "none";
+  };
+
+  const highlightDotBg = isLight ? "rgba(13,148,136,0.08)" : "rgba(45,212,191,0.08)";
+  const highlightDotBorder = isLight ? "1px solid rgba(13,148,136,0.2)" : "1px solid rgba(45,212,191,0.2)";
+
+  const subRoleDivider = isLight ? "rgba(180,130,40,0.15)" : "rgba(45,49,57,0.5)";
+  const subRoleLeftBorder = isLight ? "rgba(13,148,136,0.15)" : "rgba(45,212,191,0.12)";
+  const subRolePeriodBg = isLight ? "rgba(254,243,216,0.6)" : "rgba(45,49,57,0.35)";
+  const subRolePeriodColor = isLight ? "#7c4a03" : undefined;
+
+  // Bottom fade — cocok dengan background section
+  const bottomFadeBg = isLight
+    ? "linear-gradient(to top, rgba(240,253,249,0.9), transparent)"
+    : "linear-gradient(to top, rgba(10,11,15,0.8), transparent)";
+
+  // Section background overlay
+  const sectionTopBg = isLight
+    ? "linear-gradient(to bottom, transparent, transparent)"
+    : "linear-gradient(to bottom, rgba(10,11,15,0), rgba(16,18,24,0.1), rgba(10,11,15,0))";
+
   return (
     <section id="experience" ref={ref} className="py-32 relative overflow-hidden">
       {/* ── Atmospheric background layers ── */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink via-void/20 to-ink" />
+      <div className="absolute inset-0" style={{ background: sectionTopBg }} />
       {/* Large ambient orb */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-neon/[0.03] blur-[160px] pointer-events-none" />
       <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] rounded-full bg-neon/[0.04] blur-[140px] pointer-events-none" />
@@ -264,7 +376,9 @@ export default function Experience() {
               className="italic"
               style={{
                 color: "transparent",
-                WebkitTextStroke: "1px rgba(45,212,191,0.5)",
+                WebkitTextStroke: isLight
+                  ? "1px rgba(13,148,136,0.55)"
+                  : "1px rgba(45,212,191,0.5)",
               }}
             >
               {t.experience.sectionSub[lang]}
@@ -317,21 +431,9 @@ export default function Experience() {
                   <div
                     className="absolute left-[18px] top-7 w-3.5 h-3.5 rounded-full border-2 hidden md:block z-10 transition-all duration-300"
                     style={{
-                      borderColor: job.current
-                        ? "#2dd4bf"
-                        : isOpen
-                        ? "rgba(45,212,191,0.5)"
-                        : "#2d3139",
-                      background: job.current
-                        ? "#2dd4bf"
-                        : isOpen
-                        ? "rgba(45,212,191,0.15)"
-                        : "#1a1d24",
-                      boxShadow: job.current
-                        ? "0 0 16px rgba(45,212,191,0.6), 0 0 40px rgba(45,212,191,0.2)"
-                        : isOpen
-                        ? "0 0 8px rgba(45,212,191,0.3)"
-                        : "none",
+                      borderColor: dotBorder(job, isOpen),
+                      background: dotBg(job, isOpen),
+                      boxShadow: dotShadow(job, isOpen),
                     }}
                   />
                   {/* Pulse ring for current job */}
@@ -340,7 +442,9 @@ export default function Experience() {
                       className="absolute left-[14px] top-[23px] w-[22px] h-[22px] rounded-full hidden md:block"
                       style={{
                         animation: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",
-                        background: "rgba(45,212,191,0.15)",
+                        background: isLight
+                          ? "rgba(13,148,136,0.15)"
+                          : "rgba(45,212,191,0.15)",
                       }}
                     />
                   )}
@@ -353,28 +457,19 @@ export default function Experience() {
                       onMouseLeave={() => setHoveredIndex(null)}
                       className="w-full text-left rounded-2xl p-5 md:p-6 border transition-all duration-300 group relative overflow-hidden"
                       style={{
-                        background: isOpen
-                          ? "rgba(22,25,32,0.95)"
-                          : isHovered
-                          ? "rgba(22,25,32,0.8)"
-                          : "rgba(16,18,24,0.6)",
-                        borderColor: isOpen
-                          ? "rgba(45,212,191,0.25)"
-                          : isHovered
-                          ? "rgba(45,212,191,0.12)"
-                          : "rgba(45,49,57,0.5)",
+                        background: cardBg(isOpen, isHovered),
+                        borderColor: cardBorder(isOpen, isHovered),
                         backdropFilter: "blur(12px)",
-                        boxShadow: isOpen
-                          ? "0 4px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)"
-                          : "0 2px 20px rgba(0,0,0,0.2)",
+                        boxShadow: cardShadow(isOpen),
                       }}
                     >
                       {/* Shimmer on hover */}
                       <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                         style={{
-                          background:
-                            "linear-gradient(105deg, transparent 40%, rgba(45,212,191,0.03) 50%, transparent 60%)",
+                          background: isLight
+                            ? "linear-gradient(105deg, transparent 40%, rgba(13,148,136,0.04) 50%, transparent 60%)"
+                            : "linear-gradient(105deg, transparent 40%, rgba(45,212,191,0.03) 50%, transparent 60%)",
                         }}
                       />
 
@@ -390,13 +485,14 @@ export default function Experience() {
                                 className="font-mono text-[9px] px-2 py-0.5 rounded-full tracking-widest uppercase"
                                 style={{
                                   background: job.current
-                                    ? "rgba(45,212,191,0.12)"
-                                    : "rgba(139,148,158,0.08)",
-                                  color: job.current ? "#2dd4bf" : "#8b949e",
-                                  border: `1px solid ${
-                                    job.current
-                                      ? "rgba(45,212,191,0.25)"
-                                      : "rgba(139,148,158,0.15)"
+                                    ? isLight ? "rgba(13,148,136,0.1)" : "rgba(45,212,191,0.12)"
+                                    : isLight ? "rgba(180,130,40,0.08)" : "rgba(139,148,158,0.08)",
+                                  color: job.current
+                                    ? isLight ? "#0f766e" : "#2dd4bf"
+                                    : isLight ? "#7c4a03" : "#8b949e",
+                                  border: `1px solid ${job.current
+                                    ? isLight ? "rgba(13,148,136,0.25)" : "rgba(45,212,191,0.25)"
+                                    : isLight ? "rgba(180,130,40,0.2)" : "rgba(139,148,158,0.15)"
                                   }`,
                                 }}
                               >
@@ -413,8 +509,11 @@ export default function Experience() {
                           {/* Industry chip */}
                           <div className="flex items-center gap-2 mt-2">
                             <span
-                              className="font-mono text-[10px] text-silver/35 px-2 py-0.5 rounded-md"
-                              style={{ background: "rgba(45,49,57,0.4)" }}
+                              className="font-mono text-[10px] px-2 py-0.5 rounded-md"
+                              style={{
+                                background: industryChipBg,
+                                color: industryChipColor,
+                              }}
                             >
                               {job.industry}
                             </span>
@@ -424,39 +523,30 @@ export default function Experience() {
                         {/* Right side: period + chevron */}
                         <div className="flex flex-col items-end gap-3 flex-shrink-0">
                           <span
-                            className="font-mono text-[11px] text-silver/45 px-3 py-1 rounded-full"
-                            style={{ background: "rgba(45,49,57,0.35)" }}
+                            className="font-mono text-[11px] px-3 py-1 rounded-full"
+                            style={{
+                              background: periodChipBg,
+                              color: periodChipColor,
+                            }}
                           >
                             {job.period}
                           </span>
                           <div
                             className="w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300"
                             style={{
-                              background: isOpen
-                                ? "rgba(45,212,191,0.15)"
-                                : "rgba(45,49,57,0.4)",
-                              border: `1px solid ${
-                                isOpen
-                                  ? "rgba(45,212,191,0.3)"
-                                  : "rgba(45,49,57,0.6)"
-                              }`,
+                              background: chevronBg(isOpen),
+                              border: `1px solid ${chevronBorder(isOpen)}`,
                             }}
                           >
                             <svg
-                              className={`w-3 h-3 transition-transform duration-300 ${
-                                isOpen ? "rotate-180" : ""
-                              }`}
-                              style={{ color: isOpen ? "#2dd4bf" : "#8b949e" }}
+                              className={`w-3 h-3 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                              style={{ color: chevronColor(isOpen) }}
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
                               strokeWidth={2.5}
                             >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M19 9l-7 7-7-7"
-                              />
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                             </svg>
                           </div>
                         </div>
@@ -471,9 +561,8 @@ export default function Experience() {
                       <div
                         className="rounded-b-2xl px-6 pb-6 pt-5 -mt-2 border border-t-0"
                         style={{
-                          background:
-                            "linear-gradient(180deg, rgba(22,25,32,0.97) 0%, rgba(16,18,24,0.97) 100%)",
-                          borderColor: "rgba(45,212,191,0.15)",
+                          background: expandedPanelBg,
+                          borderColor: expandedPanelBorder,
                           backdropFilter: "blur(12px)",
                         }}
                       >
@@ -481,8 +570,9 @@ export default function Experience() {
                         <div
                           className="w-16 h-px mb-5"
                           style={{
-                            background:
-                              "linear-gradient(90deg, rgba(45,212,191,0.5), transparent)",
+                            background: isLight
+                              ? "linear-gradient(90deg, rgba(13,148,136,0.5), transparent)"
+                              : "linear-gradient(90deg, rgba(45,212,191,0.5), transparent)",
                           }}
                         />
 
@@ -490,7 +580,8 @@ export default function Experience() {
                         {!job.subRoles && (
                           <>
                             {job.desc && (
-                              <p className="font-body text-silver/65 text-sm leading-relaxed mb-6">
+                              <p className="font-body text-silver/65 text-sm leading-relaxed mb-6"
+                                style={{ color: isLight ? "#6b6660" : undefined }}>
                                 {job.desc}
                               </p>
                             )}
@@ -500,13 +591,15 @@ export default function Experience() {
                                   <div
                                     className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5"
                                     style={{
-                                      background: "rgba(45,212,191,0.08)",
-                                      border: "1px solid rgba(45,212,191,0.2)",
+                                      background: highlightDotBg,
+                                      border: highlightDotBorder,
                                     }}
                                   >
-                                    <div className="w-1.5 h-1.5 rounded-full bg-neon/70" />
+                                    <div className="w-1.5 h-1.5 rounded-full"
+                                      style={{ background: isLight ? "#0d9488" : "rgba(45,212,191,0.7)" }} />
                                   </div>
-                                  <p className="font-body text-silver/70 text-sm leading-relaxed group-hover/item:text-silver/90 transition-colors">
+                                  <p className="font-body text-sm leading-relaxed transition-colors"
+                                    style={{ color: isLight ? "#57534e" : "rgba(148,163,184,0.7)" }}>
                                     {h}
                                   </p>
                                 </div>
@@ -522,27 +615,31 @@ export default function Experience() {
                               <div key={k}>
                                 <div
                                   className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3"
-                                  style={{
-                                    borderBottom: "1px solid rgba(45,49,57,0.5)",
-                                  }}
+                                  style={{ borderBottom: `1px solid ${subRoleDivider}` }}
                                 >
-                                  <h4 className="font-body font-semibold text-frost/85 text-sm">
+                                  <h4 className="font-body font-semibold text-sm"
+                                    style={{ color: isLight ? "#1c1814" : "rgba(226,232,240,0.85)" }}>
                                     {sub.role}
                                   </h4>
                                   <span
-                                    className="font-mono text-[10px] text-silver/40 px-2 py-0.5 rounded-full"
-                                    style={{ background: "rgba(45,49,57,0.35)" }}
+                                    className="font-mono text-[10px] px-2 py-0.5 rounded-full"
+                                    style={{
+                                      background: subRolePeriodBg,
+                                      color: subRolePeriodColor ?? "rgba(148,163,184,0.4)",
+                                    }}
                                   >
                                     {sub.period}
                                   </span>
                                 </div>
                                 <div className="space-y-3 pl-3"
-                                  style={{ borderLeft: "1px solid rgba(45,212,191,0.12)" }}
+                                  style={{ borderLeft: `1px solid ${subRoleLeftBorder}` }}
                                 >
                                   {sub.highlights.map((h, j) => (
                                     <div key={j} className="flex items-start gap-3 group/item">
-                                      <div className="w-1 h-1 rounded-full bg-neon/40 mt-2.5 flex-shrink-0" />
-                                      <p className="font-body text-silver/65 text-sm leading-relaxed group-hover/item:text-silver/85 transition-colors">
+                                      <div className="w-1 h-1 rounded-full mt-2.5 flex-shrink-0"
+                                        style={{ background: isLight ? "rgba(13,148,136,0.5)" : "rgba(45,212,191,0.4)" }} />
+                                      <p className="font-body text-sm leading-relaxed transition-colors"
+                                        style={{ color: isLight ? "#6b6660" : "rgba(148,163,184,0.65)" }}>
                                         {h}
                                       </p>
                                     </div>
@@ -560,14 +657,15 @@ export default function Experience() {
             })}
           </div>
 
-          {/* Bottom fade-out */}
-          <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-            style={{ background: "linear-gradient(to top, rgba(10,11,15,0.8), transparent)" }}
+          {/* Bottom fade — menyesuaikan warna background section */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+            style={{ background: bottomFadeBg }}
           />
         </div>
       </div>
 
-      {/* Ping animation keyframe (inline style fallback) */}
+      {/* Ping animation keyframe */}
       <style>{`
         @keyframes ping {
           75%, 100% { transform: scale(2); opacity: 0; }

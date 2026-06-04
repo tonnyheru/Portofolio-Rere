@@ -287,91 +287,177 @@ html.light-mode .name-color-anim {
   100% { transform: translateY(-25px) translateX(8px); opacity: 0; }
 }
 
-/* ── Light Mode ── */
+/* ═══════════════════════════════════════════════
+   ✦ LIGHT MODE — Enhanced Edition
+   Warm ivory × teal × amber × rose gold
+   ═══════════════════════════════════════════════ */
 
+/* ── Root tokens ── */
+html.light-mode {
+  --lm-cream:       #fffcf4;
+  --lm-cream-2:     #fff9ec;
+  --lm-cream-3:     #fef5e4;
+  --lm-teal:        #0d9488;
+  --lm-teal-dark:   #0f766e;
+  --lm-teal-glow:   rgba(13,148,136,0.18);
+  --lm-amber:       #d97706;
+  --lm-amber-warm:  #b45309;
+  --lm-amber-glow:  rgba(217,119,6,0.15);
+  --lm-rose:        #e11d48;
+  --lm-rose-soft:   rgba(225,29,72,0.08);
+  --lm-ink:         #1c1814;
+  --lm-ink-2:       #3c3830;
+  --lm-muted:       #6b6660;
+  --lm-subtle:      #9c9690;
+}
+
+/* ── Base ── */
 html.light-mode body {
-  background-color: #fffdf7;
+  background-color: var(--lm-cream);
   background-image:
-    radial-gradient(circle, rgba(180,130,40,0.07) 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
-  color: #1c1a14;
+    radial-gradient(circle, rgba(180,130,40,0.06) 1px, transparent 1px),
+    radial-gradient(circle, rgba(13,148,136,0.03) 1px, transparent 1px);
+  background-size: 32px 32px, 16px 16px;
+  background-position: 0 0, 8px 8px;
+  color: var(--lm-ink);
 }
 
 html.light-mode body::before {
-  background:
-    radial-gradient(ellipse 70% 60% at -10% -10%, rgba(13,148,136,0.07) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 55% at 110% 110%, rgba(180,130,40,0.06) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 35% at 100% 0%,   rgba(13,148,136,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse 30% 25% at 0% 100%,   rgba(180,130,40,0.04) 0%, transparent 50%);
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
   z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 65% at -5% -5%,    rgba(13,148,136,0.09)  0%, transparent 55%),
+    radial-gradient(ellipse 65% 60% at 105% 108%,  rgba(180,130,40,0.08)  0%, transparent 55%),
+    radial-gradient(ellipse 45% 40% at 105% -5%,   rgba(225,29,72,0.04)   0%, transparent 50%),
+    radial-gradient(ellipse 35% 30% at -5% 105%,   rgba(13,148,136,0.04)  0%, transparent 50%),
+    radial-gradient(ellipse 50% 45% at 50%  110%,  rgba(180,130,40,0.04)  0%, transparent 50%);
 }
 
-html.light-mode { scrollbar-color: #b45309 #fffdf7; }
-html.light-mode ::-webkit-scrollbar-track { background: #fffdf7; }
-html.light-mode ::-webkit-scrollbar-thumb { background: #b45309; border-radius: 99px; }
+/* ── Scrollbar ── */
+html.light-mode { scrollbar-color: #b45309 #fef5e4; }
+html.light-mode ::-webkit-scrollbar { width: 6px; }
+html.light-mode ::-webkit-scrollbar-track { background: #fef5e4; }
+html.light-mode ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0d9488, #b45309);
+  border-radius: 99px;
+}
 
-html.light-mode ::selection { background: rgba(180,130,40,0.18); color: #1c1a14; }
+/* ── Selection ── */
+html.light-mode ::selection {
+  background: rgba(13,148,136,0.2);
+  color: var(--lm-ink);
+}
 
-/* Navbar */
+/* ══════════════════════════════
+   NAVBAR
+══════════════════════════════ */
 html.light-mode nav {
-  background: rgba(255,253,247,0.97) !important;
-  backdrop-filter: blur(20px) !important;
-  border-bottom: 1px solid rgba(180,130,40,0.15) !important;
-  box-shadow: 0 1px 12px rgba(180,130,40,0.07) !important;
+  background: rgba(255,252,244,0.92) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(180,130,40,0.12) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.8),
+    0 4px 20px rgba(180,130,40,0.06),
+    0 0 0 0 transparent !important;
 }
 
 html.light-mode nav span,
 html.light-mode nav button,
 html.light-mode nav a {
-  color: #44403c !important;
+  color: var(--lm-ink-2) !important;
+  transition: color 0.2s ease;
+}
+
+html.light-mode nav a:hover,
+html.light-mode nav button:hover {
+  color: var(--lm-teal) !important;
 }
 
 html.light-mode nav .text-neon,
 html.light-mode nav [class*="text-neon"] {
-  color: #0d9488 !important;
+  color: var(--lm-teal) !important;
+  text-shadow: 0 0 20px rgba(13,148,136,0.25);
 }
 
 html.light-mode nav [class*="text-silver"],
 html.light-mode nav [class*="text-frost"] {
-  color: #44403c !important;
+  color: var(--lm-ink-2) !important;
 }
 
 html.light-mode nav [class*="text-gray-400"],
 html.light-mode nav [class*="text-gray-500"],
 html.light-mode nav [class*="text-gray-600"] {
-  color: #57534e !important;
+  color: var(--lm-muted) !important;
 }
 
-/* Glass cards */
+/* ══════════════════════════════
+   GLASS CARDS
+══════════════════════════════ */
 html.light-mode .glass {
-  background: rgba(255,254,249,0.85) !important;
-  backdrop-filter: blur(16px) !important;
-  border-color: rgba(180,130,40,0.13) !important;
-  box-shadow: 0 2px 16px rgba(180,130,40,0.06) !important;
+  background: rgba(255,253,248,0.82) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: 1px solid rgba(255,255,255,0.7) !important;
+  border-top-color: rgba(255,255,255,0.9) !important;
+  border-left-color: rgba(255,255,255,0.9) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.8) inset,
+    0 4px 24px rgba(180,130,40,0.07),
+    0 1px 4px rgba(180,130,40,0.05) !important;
+}
+
+html.light-mode .glass-hover {
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s cubic-bezier(0.34,1.56,0.64,1) !important;
 }
 
 html.light-mode .glass-hover:hover {
-  background: rgba(255,254,249,0.98) !important;
-  border-color: rgba(13,148,136,0.3) !important;
-  box-shadow: 0 8px 32px rgba(13,148,136,0.1), 0 0 0 1px rgba(13,148,136,0.12) !important;
+  background: rgba(255,254,250,0.97) !important;
+  border-color: rgba(13,148,136,0.25) !important;
+  border-top-color: rgba(255,255,255,0.95) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 12px 40px rgba(13,148,136,0.12),
+    0 4px 16px rgba(13,148,136,0.07),
+    0 0 0 1px rgba(13,148,136,0.1) !important;
+  transform: translateY(-2px) !important;
 }
 
-/* Text colors */
-html.light-mode .text-frost    { color: #1c1a14 !important; }
-html.light-mode .text-silver-2 { color: #44403c !important; }
-html.light-mode .text-silver   { color: #57534e !important; }
-html.light-mode [class*="text-silver"] { color: #78716c !important; }
+/* ══════════════════════════════
+   TEXT COLORS
+══════════════════════════════ */
+html.light-mode .text-frost    { color: var(--lm-ink) !important; }
+html.light-mode .text-silver-2 { color: var(--lm-ink-2) !important; }
+html.light-mode .text-silver   { color: var(--lm-muted) !important; }
+html.light-mode [class*="text-silver"] { color: var(--lm-subtle) !important; }
 
-/* Neon/teal */
-html.light-mode .text-neon   { color: #0d9488 !important; }
-html.light-mode .text-neon-2 { color: #0f766e !important; }
+html.light-mode .text-neon {
+  color: var(--lm-teal) !important;
+  text-shadow: 0 0 24px rgba(13,148,136,0.2);
+}
+html.light-mode .text-neon-2 { color: var(--lm-teal-dark) !important; }
 
-/* Headings */
-html.light-mode h1,
-html.light-mode h2,
-html.light-mode h3 { color: #1c1a14; }
+/* ── Headings ── */
+html.light-mode h1 {
+  color: var(--lm-ink);
+  letter-spacing: -0.02em;
+}
+html.light-mode h2 {
+  color: var(--lm-ink);
+  letter-spacing: -0.01em;
+}
+html.light-mode h3 { color: var(--lm-ink-2); }
 
-/* Section backgrounds */
+/* ══════════════════════════════
+   SECTION BACKGROUNDS
+══════════════════════════════ */
 html.light-mode section,
 html.light-mode [class*="bg-ink"],
 html.light-mode [class*="bg-void"],
@@ -383,102 +469,757 @@ html.light-mode [class*="bg-gradient-to"] {
   background: transparent !important;
 }
 
-html.light-mode #home       { background: linear-gradient(135deg, #fffdf7 0%, #f0fdf9 60%, #fff8e7 100%) !important; }
-html.light-mode #about      { background: linear-gradient(180deg, #fffdf7 0%, #f0fdf9 100%) !important; }
-html.light-mode #skills     { background: linear-gradient(180deg, #fffef2 0%, #fffdf7 100%) !important; }
-html.light-mode #experience { background: linear-gradient(180deg, #fffdf7 0%, #fffef2 100%) !important; }
-html.light-mode #contact    { background: linear-gradient(180deg, #f0fdf9 0%, #fffdf7 100%) !important; }
-html.light-mode footer      { background: #fff8e7 !important; border-top-color: rgba(180,130,40,0.15) !important; }
+/* Unique gradient per section — creates visual rhythm */
+html.light-mode #home {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(13,148,136,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(180,130,40,0.05) 0%, transparent 60%),
+    linear-gradient(160deg, #fffcf4 0%, #f0fdf9 55%, #fffbe8 100%) !important;
+}
 
-/* Borders */
+html.light-mode #about {
+  background:
+    radial-gradient(ellipse 70% 50% at 100% 50%, rgba(13,148,136,0.05) 0%, transparent 55%),
+    linear-gradient(180deg, #fffcf4 0%, #f0fdf9 100%) !important;
+}
+
+html.light-mode #skills {
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%,   rgba(180,130,40,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(13,148,136,0.04) 0%, transparent 50%),
+    linear-gradient(180deg, #fefcf0 0%, #fffcf4 100%) !important;
+}
+
+html.light-mode #experience {
+  background:
+    radial-gradient(ellipse 60% 50% at 0% 50%, rgba(13,148,136,0.05) 0%, transparent 55%),
+    linear-gradient(180deg, #fffcf4 0%, #fefcf0 100%) !important;
+}
+
+html.light-mode #contact {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%,   rgba(13,148,136,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 90% 80%,  rgba(180,130,40,0.04) 0%, transparent 50%),
+    linear-gradient(180deg, #f0fdf9 0%, #fffcf4 100%) !important;
+}
+
+html.light-mode footer {
+  background: linear-gradient(180deg, #fffbe8 0%, #fef8df 100%) !important;
+  border-top: 1px solid rgba(180,130,40,0.12) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+html.light-mode footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% -10%, rgba(13,148,136,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ══════════════════════════════
+   BORDERS
+══════════════════════════════ */
 html.light-mode [class*="border-graphite-2"] {
-  border-color: rgba(180,130,40,0.12) !important;
+  border-color: rgba(180,130,40,0.1) !important;
 }
 
-/* Buttons & badges */
+/* ══════════════════════════════
+   BUTTONS & BADGES
+══════════════════════════════ */
 html.light-mode [class*="bg-neon"] {
-  background: rgba(13,148,136,0.07) !important;
+  background: rgba(13,148,136,0.08) !important;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
+html.light-mode [class*="bg-neon"]:hover {
+  background: rgba(13,148,136,0.14) !important;
+  box-shadow: 0 0 16px rgba(13,148,136,0.15) !important;
+}
+
 html.light-mode [class*="border-neon"] {
-  border-color: rgba(13,148,136,0.22) !important;
+  border-color: rgba(13,148,136,0.25) !important;
 }
 
 html.light-mode [class*="border-emerald-500"] {
-  border-color: rgba(16,185,129,0.35) !important;
+  border-color: rgba(16,185,129,0.3) !important;
 }
 
-/* Section label mono */
+/* ── Section label (mono accent) ── */
 html.light-mode span.font-mono[class*="text-neon"] {
-  color: #b45309 !important;
+  color: var(--lm-amber-warm) !important;
+  position: relative;
 }
 
-/* Skill chips / marquee tags */
+/* ── Skill chips / marquee ── */
 html.light-mode span.font-mono.rounded-full {
-  background: #fef9ee !important;
+  background: linear-gradient(135deg, #fef9ee 0%, #fef3d8 100%) !important;
+  border: 1px solid rgba(180,130,40,0.18) !important;
+  color: var(--lm-ink-2) !important;
+  box-shadow: 0 1px 3px rgba(180,130,40,0.08), 0 1px 0 rgba(255,255,255,0.8) inset !important;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s !important;
+}
+
+html.light-mode span.font-mono.rounded-full:hover {
+  border-color: rgba(13,148,136,0.3) !important;
+  box-shadow: 0 4px 12px rgba(13,148,136,0.1), 0 1px 0 rgba(255,255,255,0.9) inset !important;
+  transform: translateY(-1px) !important;
+  color: var(--lm-teal-dark) !important;
+}
+
+/* ══════════════════════════════
+   EXPERIENCE TIMELINE
+══════════════════════════════ */
+html.light-mode .timeline-line-anim {
+  background: linear-gradient(180deg, var(--lm-teal) 0%, var(--lm-amber-warm) 100%) !important;
+  box-shadow: 0 0 8px rgba(13,148,136,0.3) !important;
+}
+
+html.light-mode .absolute.rounded-full[style*="background: #1a1d24"] {
+  background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+  border-color: rgba(180,130,40,0.35) !important;
+  box-shadow: 0 0 0 3px rgba(180,130,40,0.1), 0 2px 8px rgba(180,130,40,0.15) !important;
+}
+
+/* ══════════════════════════════
+   MONO TEXT
+══════════════════════════════ */
+html.light-mode .font-mono {
+  color: var(--lm-muted);
+  letter-spacing: 0.01em;
+}
+html.light-mode .font-mono.text-neon {
+  color: var(--lm-amber-warm) !important;
+}
+
+/* ══════════════════════════════
+   DECORATIVE ELEMENTS
+══════════════════════════════ */
+html.light-mode .bg-gradient-to-r.from-transparent {
+  background: transparent !important;
+}
+
+html.light-mode [class*="bg-gradient-to-r"][class*="from-neon"] {
+  background: linear-gradient(to right, rgba(13,148,136,0.25), rgba(180,130,40,0.1), transparent) !important;
+}
+
+/* ── Orbs & glows — subtler, warmer ── */
+html.light-mode .animate-pulse-glow {
+  opacity: 0.08 !important;
+  filter: blur(40px) saturate(150%);
+}
+
+/* ── Progress / scroll indicators ── */
+html.light-mode .bg-gradient-to-b { background: transparent !important; }
+
+/* ══════════════════════════════
+   FORM INPUTS
+══════════════════════════════ */
+html.light-mode input,
+html.light-mode textarea {
+  background: rgba(255,253,248,0.95) !important;
+  border: 1px solid rgba(180,130,40,0.18) !important;
+  color: var(--lm-ink) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.9) inset !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+html.light-mode input::placeholder,
+html.light-mode textarea::placeholder {
+  color: #b5b0aa !important;
+}
+
+html.light-mode input:focus,
+html.light-mode textarea:focus {
+  border-color: rgba(13,148,136,0.4) !important;
+  box-shadow:
+    0 0 0 3px rgba(13,148,136,0.09),
+    0 2px 8px rgba(13,148,136,0.06),
+    0 1px 0 rgba(255,255,255,0.9) inset !important;
+  outline: none !important;
+}
+
+/* ══════════════════════════════
+   ID CARD / HERO CARD
+══════════════════════════════ */
+html.light-mode .gradient-border .absolute.inset-0 {
+  background: linear-gradient(140deg, #fffef9 0%, #f0fdf9 50%, #fff8e6 100%) !important;
+}
+
+/* ══════════════════════════════
+   HERO SECTION
+══════════════════════════════ */
+html.light-mode #home .absolute.inset-0 { opacity: 0.15 !important; }
+
+/* ══════════════════════════════
+   NAME ANIMATION — Richer palette
+══════════════════════════════ */
+html.light-mode .name-color-anim {
+  animation: nameGlow 8s ease-in-out infinite !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+}
+
+@keyframes nameGlow {
+  0%   { color: #0d9488; text-shadow: 0 0 30px rgba(13,148,136,0.35); }
+  20%  { color: #b45309; text-shadow: 0 0 30px rgba(180,83,9,0.3); }
+  40%  { color: #0f766e; text-shadow: 0 0 30px rgba(15,118,110,0.35); }
+  60%  { color: #d97706; text-shadow: 0 0 30px rgba(217,119,6,0.3); }
+  80%  { color: #e11d48; text-shadow: 0 0 30px rgba(225,29,72,0.25); }
+  100% { color: #0d9488; text-shadow: 0 0 30px rgba(13,148,136,0.35); }
+}
+
+/* ══════════════════════════════
+   LINK ACCENTS
+══════════════════════════════ */
+html.light-mode a:not(nav a):not([class]) {
+  color: var(--lm-teal-dark);
+  text-decoration-color: rgba(13,148,136,0.3);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+html.light-mode a:not(nav a):not([class]):hover {
+  color: var(--lm-teal);
+  text-decoration-color: rgba(13,148,136,0.6);
+}
+
+/* ══════════════════════════════
+   CARD SHIMMER — hover effect
+══════════════════════════════ */
+html.light-mode .glass-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255,255,255,0.35) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  background-position: 200% 0;
+  transition: background-position 0.5s ease;
+  pointer-events: none;
+}
+
+html.light-mode .glass-hover:hover::after {
+  background-position: -200% 0;
+}
+
+/* ══════════════════════════════
+   FOCUS-VISIBLE RING
+══════════════════════════════ */
+html.light-mode *:focus-visible {
+  outline: 2px solid rgba(13,148,136,0.5) !important;
+  outline-offset: 2px !important;
+}
+
+/* ══════════════════════════════
+   CUSTOM HIGHLIGHT DIVIDERS
+══════════════════════════════ */
+html.light-mode hr,
+html.light-mode [role="separator"] {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(13,148,136,0.2) 20%,
+    rgba(180,130,40,0.2) 50%,
+    rgba(13,148,136,0.2) 80%,
+    transparent
+  ) !important;
+}
+
+/* ══════════════════════════════
+   TOOLTIP / POPOVER SURFACES
+══════════════════════════════ */
+html.light-mode [role="tooltip"],
+html.light-mode [data-tooltip] {
+  background: rgba(28,24,20,0.92) !important;
+  color: #fef9ee !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   KARTU ABU-ABU → CERAH (About, Skills, Experience,
+   Contact — semua card berbackground gelap)
+══════════════════════════════════════════════════ */
+
+/* Tangkap semua varian kelas background gelap yang dipakai dark-theme card */
+html.light-mode [class*="bg-graphite"],
+html.light-mode [class*="bg-ink"],
+html.light-mode [class*="bg-void"],
+html.light-mode [class*="bg-card"],
+html.light-mode [class*="bg-dark"],
+html.light-mode [class*="bg-surface"] {
+  background: rgba(255,253,248,0.92) !important;
+  border: 1px solid rgba(180,130,40,0.14) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.85) inset,
+    0 2px 12px rgba(180,130,40,0.06) !important;
+  color: var(--lm-ink) !important;
+}
+
+/* Kartu skill besar (4-grid & 3-grid di #skills) */
+html.light-mode #skills [class*="rounded"],
+html.light-mode #about  [class*="rounded"] {
+  background: rgba(255,253,248,0.93) !important;
+  border: 1px solid rgba(180,130,40,0.13) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 2px 16px rgba(180,130,40,0.07) !important;
+  transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+
+html.light-mode #skills [class*="rounded"]:hover,
+html.light-mode #about  [class*="rounded"]:hover {
+  border-color: rgba(13,148,136,0.28) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.95) inset,
+    0 8px 28px rgba(13,148,136,0.1),
+    0 0 0 1px rgba(13,148,136,0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Kartu experience timeline */
+html.light-mode #experience [class*="rounded"] {
+  background: rgba(255,253,248,0.93) !important;
+  border: 1px solid rgba(180,130,40,0.12) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 2px 14px rgba(180,130,40,0.06) !important;
+  transition: box-shadow 0.3s, border-color 0.3s, transform 0.25s ease !important;
+}
+
+html.light-mode #experience [class*="rounded"]:hover {
+  border-color: rgba(13,148,136,0.25) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.95) inset,
+    0 6px 24px rgba(13,148,136,0.09) !important;
+  transform: translateX(3px) !important;
+}
+
+/* Kartu contact (email, phone, form) */
+html.light-mode #contact [class*="rounded"] {
+  background: rgba(255,253,248,0.95) !important;
+  border: 1px solid rgba(180,130,40,0.13) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 4px 20px rgba(180,130,40,0.07) !important;
+}
+
+/* ── TEKS di dalam kartu — perkuat kontras ── */
+
+/* Judul kartu (nama skill, jabatan, dll) */
+html.light-mode #skills    [class*="rounded"] h3,
+html.light-mode #skills    [class*="rounded"] [class*="font-semibold"],
+html.light-mode #skills    [class*="rounded"] [class*="font-medium"],
+html.light-mode #about     [class*="rounded"] h3,
+html.light-mode #about     [class*="rounded"] [class*="font-semibold"],
+html.light-mode #about     [class*="rounded"] [class*="font-medium"],
+html.light-mode #experience [class*="rounded"] h3,
+html.light-mode #experience [class*="rounded"] [class*="font-semibold"],
+html.light-mode #experience [class*="rounded"] [class*="font-medium"],
+html.light-mode #contact   [class*="rounded"] h3,
+html.light-mode #contact   [class*="rounded"] [class*="font-semibold"],
+html.light-mode #contact   [class*="rounded"] [class*="font-medium"] {
+  color: var(--lm-ink) !important;
+  font-weight: 600 !important;
+}
+
+/* Subjudul / deskripsi kartu */
+html.light-mode #skills    [class*="rounded"] p,
+html.light-mode #skills    [class*="rounded"] [class*="text-sm"],
+html.light-mode #about     [class*="rounded"] p,
+html.light-mode #about     [class*="rounded"] [class*="text-sm"],
+html.light-mode #experience [class*="rounded"] p,
+html.light-mode #experience [class*="rounded"] [class*="text-sm"],
+html.light-mode #contact   [class*="rounded"] p,
+html.light-mode #contact   [class*="rounded"] [class*="text-sm"] {
+  color: var(--lm-muted) !important;
+}
+
+/* Teks abu/muted yang terlalu pudar */
+html.light-mode [class*="text-gray-400"],
+html.light-mode [class*="text-gray-500"] {
+  color: var(--lm-muted) !important;
+}
+html.light-mode [class*="text-gray-300"],
+html.light-mode [class*="text-gray-200"] {
+  color: var(--lm-subtle) !important;
+}
+
+/* ── Badge / tag kecil (F&B, Systems, dll) ── */
+html.light-mode [class*="rounded-full"][class*="text-xs"],
+html.light-mode [class*="rounded-full"][class*="text-[10px]"],
+html.light-mode [class*="rounded-full"][class*="text-[11px]"] {
+  background: linear-gradient(135deg, #fef3d8, #fde9b8) !important;
+  border: 1px solid rgba(180,130,40,0.22) !important;
+  color: #7c4a03 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* Badge teal/neon override (TERBARU, Open to Work, dll) */
+html.light-mode [class*="rounded-full"][class*="neon"],
+html.light-mode [class*="rounded-full"][class*="teal"],
+html.light-mode [class*="rounded-full"][class*="emerald"] {
+  background: rgba(13,148,136,0.1) !important;
+  border: 1px solid rgba(13,148,136,0.3) !important;
+  color: var(--lm-teal-dark) !important;
+  font-weight: 600 !important;
+}
+
+/* ── Date chip (Apr 2026 – Present) ── */
+html.light-mode [class*="rounded-full"][class*="border"] {
+  color: var(--lm-ink-2) !important;
+  background: rgba(255,249,236,0.9) !important;
   border-color: rgba(180,130,40,0.2) !important;
+}
+
+/* ── Icon wrapper di dalam kartu ── */
+html.light-mode [class*="rounded-xl"][class*="bg-"] > span,
+html.light-mode [class*="rounded-lg"][class*="bg-"] > span {
+  color: var(--lm-ink-2) !important;
+}
+
+/* ── "Open to Work" card (contact/about) ── */
+html.light-mode [class*="border-neon"],
+html.light-mode [class*="border-teal"],
+html.light-mode [class*="border-emerald"] {
+  background: rgba(240,253,249,0.9) !important;
+  border-color: rgba(13,148,136,0.25) !important;
+}
+
+html.light-mode [class*="border-neon"]   p,
+html.light-mode [class*="border-teal"]   p,
+html.light-mode [class*="border-emerald"] p {
+  color: var(--lm-ink-2) !important;
+}
+
+/* ── Tombol Kirim Pesan ── */
+html.light-mode button[class*="bg-neon"],
+html.light-mode button[class*="bg-teal"],
+html.light-mode a[class*="bg-neon"],
+html.light-mode a[class*="bg-teal"] {
+  background: linear-gradient(135deg, #0d9488, #0f766e) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(13,148,136,0.3) !important;
+  border: none !important;
+  font-weight: 600 !important;
+}
+
+html.light-mode button[class*="bg-neon"]:hover,
+html.light-mode button[class*="bg-teal"]:hover {
+  background: linear-gradient(135deg, #0f766e, #115e59) !important;
+  box-shadow: 0 6px 24px rgba(13,148,136,0.38) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ════════════════════════════════════════════════
+   FADE MASK ABU/HITAM — Hapus total di light mode
+   ════════════════════════════════════════════════ */
+
+/* 1. Override Tailwind gradient CSS variables (from/to/via gelap) */
+html.light-mode .from-black,
+html.light-mode .from-gray-950,
+html.light-mode .from-gray-900,
+html.light-mode .from-gray-800,
+html.light-mode .from-neutral-950,
+html.light-mode .from-neutral-900,
+html.light-mode .from-neutral-800,
+html.light-mode .from-zinc-900,
+html.light-mode .from-slate-900 {
+  --tw-gradient-from: transparent !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent) !important;
+}
+
+html.light-mode .to-black,
+html.light-mode .to-gray-950,
+html.light-mode .to-gray-900,
+html.light-mode .to-gray-800,
+html.light-mode .to-neutral-950,
+html.light-mode .to-neutral-900,
+html.light-mode .to-neutral-800,
+html.light-mode .to-zinc-900,
+html.light-mode .to-slate-900 {
+  --tw-gradient-to: rgba(255,252,244,0.98) !important;
+}
+
+html.light-mode .via-black,
+html.light-mode .via-gray-900,
+html.light-mode .via-neutral-900 {
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(255,252,244,0.6), var(--tw-gradient-to, transparent) !important;
+}
+
+/* 2. Semua elemen bg solid gelap di seluruh halaman */
+html.light-mode .bg-black,
+html.light-mode .bg-gray-950,
+html.light-mode .bg-gray-900,
+html.light-mode .bg-gray-800,
+html.light-mode .bg-neutral-950,
+html.light-mode .bg-neutral-900,
+html.light-mode .bg-neutral-800,
+html.light-mode .bg-zinc-900,
+html.light-mode .bg-slate-900 {
+  background-color: rgba(255,252,244,0.97) !important;
+}
+
+/* 3. Elemen dengan class absolute/fixed yang berfungsi sebagai overlay fade */
+html.light-mode .absolute[class*="from-black"],
+html.light-mode .absolute[class*="from-gray-9"],
+html.light-mode .absolute[class*="from-neutral-9"],
+html.light-mode .fixed[class*="from-black"],
+html.light-mode .fixed[class*="from-gray-9"] {
+  background: linear-gradient(to bottom, transparent, rgba(255,252,244,0.98)) !important;
+}
+
+/* 4. Pseudo-element ::after / ::before pada semua card di semua section */
+html.light-mode #experience [class*="rounded"]::after,
+html.light-mode #experience [class*="rounded"]::before,
+html.light-mode #skills     [class*="rounded"]::after,
+html.light-mode #about      [class*="rounded"]::after {
+  background: linear-gradient(to bottom, transparent, rgba(255,252,244,0.98)) !important;
+}
+
+/* 5. Nuclear option — elemen apapun di #experience dengan background gelap */
+html.light-mode #experience * {
+  --tw-gradient-from: transparent !important;
+  --tw-gradient-to:   rgba(255,252,244,0.98) !important;
+}
+
+/* Pulihkan card utama agar tidak ikut terpengaruh nuclear option */
+html.light-mode #experience [class*="rounded-"] {
+  background: rgba(255,253,248,0.93) !important;
+}
+
+/* ── Scrollbar indicator bar (top of page) ── */
+html.light-mode [class*="fixed"][class*="top-0"][class*="h-[2px]"],
+html.light-mode [class*="fixed"][class*="top-0"][class*="h-[3px]"],
+html.light-mode [class*="fixed"][class*="top-0"][class*="h-1"] {
+  background: linear-gradient(to right, var(--lm-teal), var(--lm-amber)) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   LIGHT MODE — FONT & TEXT COLOR FIX (Comprehensive)
+   Semua teks yang transparan/pucat di dark mode
+   dikonversi ke warna gelap solid di light mode.
+   Dark mode TIDAK terpengaruh sama sekali.
+══════════════════════════════════════════════════════ */
+
+/* ── 1. Tailwind color classes kustom ── */
+
+/* text-frost (#f0f6fc di dark) → tinta gelap di light */
+html.light-mode .text-frost,
+html.light-mode [class*="text-frost"] {
+  color: #1c1814 !important;
+}
+
+/* text-silver (#94a3b8 di dark) — semua opacity variants */
+html.light-mode .text-silver,
+html.light-mode [class*="text-silver"] {
   color: #44403c !important;
 }
 
-/* Experience timeline */
-html.light-mode .timeline-line-anim {
-  background-color: #b45309 !important;
+/* text-silver-2 (#e2e8f0 di dark) */
+html.light-mode .text-silver-2,
+html.light-mode [class*="text-silver-2"] {
+  color: #1c1814 !important;
 }
 
-/* Mono text */
-html.light-mode .font-mono { color: #57534e; }
-html.light-mode .font-mono.text-neon { color: #b45309 !important; }
-
-/* Decorative lines */
-html.light-mode .bg-gradient-to-r.from-transparent { background: transparent !important; }
-
-html.light-mode [class*="bg-gradient-to-r"][class*="from-neon"] {
-  background: linear-gradient(to right, rgba(180,130,40,0.3), transparent) !important;
+/* text-neon / text-neon-2 — teal gelap agar kontras di krem */
+html.light-mode .text-neon,
+html.light-mode [class*="text-neon"] {
+  color: #0d9488 !important;
+}
+html.light-mode .text-neon-2,
+html.light-mode [class*="text-neon-2"] {
+  color: #0f766e !important;
 }
 
-/* Orbs & glows */
-html.light-mode .animate-pulse-glow { opacity: 0.1 !important; }
+/* text-glow */
+html.light-mode .text-glow { color: #0f766e !important; }
 
-/* Scrollbar indicator */
-html.light-mode .bg-gradient-to-b { background: transparent !important; }
+/* ── 2. Tailwind opacity modifier: text-silver/XX ──
+   Tailwind mengubah --tw-text-opacity, sehingga warna
+   aslinya (#94a3b8) × opacity sangat pudar di bg terang.
+   Kita naikkan opacity + ganti ke warna gelap. */
 
-/* Form inputs */
-html.light-mode input,
-html.light-mode textarea {
-  background: rgba(255,254,249,0.9) !important;
-  border-color: rgba(180,130,40,0.2) !important;
-  color: #1c1a14 !important;
-}
-html.light-mode input::placeholder,
-html.light-mode textarea::placeholder { color: #a8a29e !important; }
-html.light-mode input:focus,
-html.light-mode textarea:focus {
-  border-color: rgba(13,148,136,0.45) !important;
-  box-shadow: 0 0 0 3px rgba(13,148,136,0.07) !important;
+html.light-mode [class*="text-silver/"] {
+  color: #57534e !important;
+  --tw-text-opacity: 1 !important;
 }
 
-/* ID Card */
-html.light-mode .gradient-border .absolute.inset-0 {
-  background: linear-gradient(135deg, #fffef9 0%, #f0fdf9 100%) !important;
+html.light-mode [class*="text-frost/"] {
+  color: #1c1814 !important;
+  --tw-text-opacity: 1 !important;
 }
 
-/* Timeline dot */
-html.light-mode .absolute.rounded-full[style*="background: #1a1d24"] {
-  background: #fef3c7 !important;
-  border-color: rgba(180,130,40,0.3) !important;
+html.light-mode [class*="text-neon/"] {
+  color: #0d9488 !important;
+  --tw-text-opacity: 1 !important;
 }
 
-/* Hero section */
-html.light-mode #home .absolute.inset-0 { opacity: 0.2 !important; }
-
-/* Name color animation */
-html.light-mode .name-color-anim {
-  animation: nameColorShiftWarm 6s ease infinite !important;
+html.light-mode [class*="text-white/"] {
+  color: #1c1814 !important;
+  --tw-text-opacity: 1 !important;
 }
 
-@keyframes nameColorShiftWarm {
-  0%   { color: #0d9488; }
-  25%  { color: #b45309; }
-  50%  { color: #0f766e; }
-  75%  { color: #92400e; }
-  100% { color: #0d9488; }
+/* ── 3. Tailwind gray scale — light ke dark ── */
+html.light-mode .text-gray-100,
+html.light-mode .text-gray-200 { color: #3c3830 !important; }
+html.light-mode .text-gray-300 { color: #44403c !important; }
+html.light-mode .text-gray-400 { color: #57534e !important; }
+html.light-mode .text-gray-500 { color: #6b6660 !important; }
+html.light-mode .text-gray-600 { color: #78716c !important; }
+html.light-mode .text-slate-200,
+html.light-mode .text-slate-300 { color: #44403c !important; }
+html.light-mode .text-slate-400 { color: #57534e !important; }
+html.light-mode .text-slate-500 { color: #6b6660 !important; }
+html.light-mode .text-zinc-400  { color: #57534e !important; }
+html.light-mode .text-zinc-500  { color: #6b6660 !important; }
+html.light-mode .text-white     { color: #1c1814 !important; }
+
+/* ── 4. Opacity modifier untuk gray/slate/zinc ── */
+html.light-mode [class*="text-gray-"][class*="/"],
+html.light-mode [class*="text-slate-"][class*="/"],
+html.light-mode [class*="text-zinc-"][class*="/"] {
+  --tw-text-opacity: 1 !important;
+  color: #57534e !important;
+}
+
+/* ── 5. Heading & paragraph global di light mode ── */
+html.light-mode h1,
+html.light-mode h2,
+html.light-mode h3,
+html.light-mode h4,
+html.light-mode h5,
+html.light-mode h6 {
+  color: #1c1814 !important;
+}
+
+html.light-mode p {
+  color: #44403c;
+}
+
+/* ── 6. Section-specific overrides ── */
+
+/* Hero — teks statistik, label, dsb */
+html.light-mode #home p,
+html.light-mode #home span:not([class*="bg-"]):not([class*="border-"]) {
+  color: #44403c;
+}
+html.light-mode #home h1,
+html.light-mode #home h2 { color: #1c1814 !important; }
+
+/* About */
+html.light-mode #about p { color: #44403c; }
+html.light-mode #about span { color: #57534e; }
+
+/* Skills */
+html.light-mode #skills p { color: #44403c; }
+html.light-mode #skills h3 { color: #1c1814 !important; }
+
+/* Experience */
+html.light-mode #experience p { color: #57534e; }
+html.light-mode #experience h3,
+html.light-mode #experience h4 { color: #1c1814 !important; }
+html.light-mode #experience span { color: #6b6660; }
+
+/* Contact */
+html.light-mode #contact p { color: #44403c; }
+html.light-mode #contact h2,
+html.light-mode #contact h3 { color: #1c1814 !important; }
+html.light-mode #contact label { color: #3c3830 !important; font-weight: 500; }
+
+/* Footer */
+html.light-mode footer p,
+html.light-mode footer span { color: #6b6660; }
+html.light-mode footer a { color: #0f766e; }
+
+/* ── 7. Teks dengan opacity Tailwind yang sangat rendah ──
+   Class seperti text-neon/20, text-silver/30 di Hero/Contact
+   jadi dekoratif/large display — biarkan agak pudar tapi tetap terbaca */
+html.light-mode [class*="text-neon/2"],
+html.light-mode [class*="text-neon/3"],
+html.light-mode [class*="text-neon/4"] {
+  /* Dekoratif besar (outline/ghost) — biarkan transparan tapi pakai teal */
+  color: rgba(13,148,136,0.35) !important;
+}
+
+/* ── 8. Font-mono label & tracking text ── */
+html.light-mode .font-mono {
+  color: #6b6660 !important;
+}
+html.light-mode .font-mono[class*="text-neon"],
+html.light-mode .font-mono[class*="text-silver"] {
+  color: #b45309 !important;
+}
+
+/* ── 9. Pastikan teks di dalam glass card terbaca ── */
+html.light-mode .glass p,
+html.light-mode .glass span,
+html.light-mode .glass h3,
+html.light-mode .glass h4 {
+  color: #1c1814 !important;
+}
+html.light-mode .glass .font-mono { color: #6b6660 !important; }
+
+/* ── 10. Inline style rgba — override dengan CSS variable trick ──
+   Tidak bisa override langsung, tapi bisa pakai forced color pada
+   elemen teks yang jadi anak dari section tertentu */
+html.light-mode #home    *[style*="color: rgba(148"],
+html.light-mode #about   *[style*="color: rgba(148"],
+html.light-mode #skills  *[style*="color: rgba(148"],
+html.light-mode #contact *[style*="color: rgba(148"] {
+  color: #57534e !important;
+}
+
+html.light-mode #home    *[style*="color: rgba(94"],
+html.light-mode #about   *[style*="color: rgba(94"],
+html.light-mode #skills  *[style*="color: rgba(94"],
+html.light-mode #contact *[style*="color: rgba(94"] {
+  color: #0d9488 !important;
+}
+
+html.light-mode #home    *[style*="color: rgba(203"],
+html.light-mode #about   *[style*="color: rgba(203"] {
+  color: #3c3830 !important;
+}
+
+/* ── 11. Stats / angka besar di Hero & Experience ── */
+html.light-mode [class*="text-3xl"][class*="font-bold"],
+html.light-mode [class*="text-4xl"][class*="font-bold"],
+html.light-mode [class*="text-5xl"][class*="font-bold"] {
+  color: #1c1814 !important;
+}
+html.light-mode [class*="text-3xl"][class*="text-neon"],
+html.light-mode [class*="text-4xl"][class*="text-neon"] {
+  color: #0d9488 !important;
+}
+
+/* ── 12. Tracking/uppercase label kecil ── */
+html.light-mode [class*="tracking-widest"],
+html.light-mode [class*="tracking-["] {
+  color: #78716c !important;
+}
+html.light-mode [class*="tracking-widest"][class*="text-neon"],
+html.light-mode [class*="tracking-["][class*="text-neon"] {
+  color: #b45309 !important;
+}
+
+/* ══════════════════════════════
+   PRINT OVERRIDE
+══════════════════════════════ */
+@media print {
+  html.light-mode body {
+    background: #fff !important;
+    background-image: none !important;
+  }
+  html.light-mode body::before { display: none !important; }
+  html.light-mode .glass { box-shadow: none !important; border: 1px solid #ddd !important; }
 }

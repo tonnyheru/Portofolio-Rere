@@ -220,7 +220,7 @@ export default function Contact() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
             </span>
             <span className="font-mono text-[11px] text-emerald-400/80 tracking-wide">
-              {lang === "id" ? "Tersedia untuk kesempatan baru" : "Open to new opportunities"}
+              {lang === "id" ? "Bersedia untuk kesempatan baru" : "Open to new opportunities"}
             </span>
           </div>
         </div>
