@@ -332,7 +332,7 @@ export default function Hero() {
             >
               <h1
                 style={{
-                  fontFamily: "'Georgia', 'Times New Roman', serif",
+                  fontFamily: "'SimplyOlive', cursive",
                   letterSpacing: "0.02em",
                   color: "#1c1814",
                   textShadow: "0 0 80px rgba(20,184,166,0.3), 0 2px 30px rgba(0,0,0,0.5)",
@@ -644,7 +644,7 @@ export default function Hero() {
                   <div className="mb-4 text-center">
                     <h3
                       style={{
-                        fontFamily: "'Georgia', 'Times New Roman', serif",
+                        fontFamily: "'SimplyOlive', cursive",
                         color: "#1c1814",
                       }}
                       className="text-xl sm:text-2xl leading-tight"

@@ -90,14 +90,16 @@ export default function About() {
                 <p key={i} className="font-body text-silver leading-relaxed"
                   style={{ opacity: 1 - i * 0.08 }}>
                   {i === 0
-                    ? bio.split("Purchasing").map((part, j, arr) =>
-                        j < arr.length - 1
-                          ? <span key={j}>{part}<span className="font-medium"
-                              style={{ color: "rgb(94,234,212)", textShadow: "0 0 20px rgba(20,184,166,0.4)" }}>
-                              Purchasing
-                            </span></span>
-                          : <span key={j}>{part}</span>
-                      )
+                    ? bio
+                        .split(/(Purchasing|Cost Control|Inventory Management)/)
+                        .map((part, j) =>
+                          ["Purchasing", "Cost Control", "Inventory Management"].includes(part)
+                            ? <span key={j} className="font-bold"
+                                style={{ color: "rgb(13,148,136)" }}>
+                                {part}
+                              </span>
+                            : <span key={j}>{part}</span>
+                        )
                     : bio
                   }
                 </p>
