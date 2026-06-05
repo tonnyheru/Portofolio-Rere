@@ -1092,7 +1092,7 @@ html.light-mode [class*="text-zinc-"][class*="/"] {
   color: #57534e !important;
 }
 
-/* ── 5. Heading & paragraph global di light mode ── */
+/* ── 5. Semua teks non-heading → hitam/gelap di light mode ── */
 html.light-mode h1,
 html.light-mode h2,
 html.light-mode h3,
@@ -1102,9 +1102,32 @@ html.light-mode h6 {
   color: #1c1814 !important;
 }
 
-html.light-mode p {
-  color: #44403c;
+/* Semua paragraf, span, label, li → hitam solid */
+html.light-mode p   { color: #1c1814 !important; }
+html.light-mode li  { color: #1c1814 !important; }
+html.light-mode span:not([class*="bg-"]):not([class*="border-"]):not([class*="rounded-full"]):not([class*="absolute"]):not([class*="inline-flex"]) {
+  color: #1c1814 !important;
 }
+html.light-mode label { color: #1c1814 !important; font-weight: 500; }
+
+/* Teks kecil/deskripsi — hitam agak soft */
+html.light-mode [class*="text-sm"] { color: #1c1814 !important; }
+html.light-mode [class*="text-xs"] { color: #44403c !important; }
+html.light-mode [class*="text-[10px]"],
+html.light-mode [class*="text-[9px]"],
+html.light-mode [class*="text-[11px]"] { color: #44403c !important; }
+
+/* font-mono label kecil — cokelat tua agar berbeda dari body text */
+html.light-mode .font-mono { color: #44403c !important; }
+
+/* Teks teal (neon) tetap teal — jangan di-override ke hitam */
+html.light-mode .text-neon,
+html.light-mode [class*="text-neon"] { color: #0d9488 !important; }
+html.light-mode .text-neon-2 { color: #0f766e !important; }
+
+/* Teks emerald (Available) tetap hijau */
+html.light-mode .text-emerald-400,
+html.light-mode [class*="text-emerald"] { color: #059669 !important; }
 
 /* ── 6. Section-specific overrides ── */
 

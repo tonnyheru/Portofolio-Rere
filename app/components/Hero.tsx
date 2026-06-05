@@ -332,9 +332,9 @@ export default function Hero() {
             >
               <h1
                 style={{
-                  fontFamily: "'Hugheid', cursive",
+                  fontFamily: "'Georgia', 'Times New Roman', serif",
                   letterSpacing: "0.02em",
-                  animation: "nameColorShift 6s ease infinite",
+                  color: "#1c1814",
                   textShadow: "0 0 80px rgba(20,184,166,0.3), 0 2px 30px rgba(0,0,0,0.5)",
                 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-[1.1] name-color-anim"
@@ -417,20 +417,21 @@ export default function Hero() {
                 className="group relative flex items-center gap-2 px-6 py-3 text-sm font-medium rounded-xl overflow-hidden"
                 style={{
                   background: "rgba(20,184,166,0.12)",
-                  border: "1px solid rgba(20,184,166,0.4)",
-                  color: "rgb(94,234,212)",
+                  border: "1px solid rgba(180,130,40,0.25)",
+                  color: "#1c1814",
+                  background: "rgba(255,253,248,0.9)",
                   transition: "all 0.3s ease",
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(20,184,166,0.22)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(20,184,166,0.7)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 0 30px rgba(20,184,166,0.2), 0 8px 20px rgba(0,0,0,0.3)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(13,148,136,0.08)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(13,148,136,0.35)";
+                  (e.currentTarget as HTMLElement).style.color = "#0f766e";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(20,184,166,0.12)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(20,184,166,0.4)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(255,253,248,0.9)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(180,130,40,0.25)";
+                  (e.currentTarget as HTMLElement).style.color = "#1c1814";
                   (e.currentTarget as HTMLElement).style.transform = "";
                 }}
               >
@@ -449,21 +450,21 @@ export default function Hero() {
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 className="group relative px-6 py-3 text-sm font-medium rounded-xl overflow-hidden"
                 style={{
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  color: "rgba(203,213,225,0.85)",
+                  border: "1px solid rgba(180,130,40,0.25)",
+                  color: "#1c1814",
+                  background: "rgba(255,253,248,0.9)",
                   transition: "all 0.3s ease",
-                  background: "rgba(255,255,255,0.03)",
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.3)";
-                  (e.currentTarget as HTMLElement).style.color = "#f8fafc";
-                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(13,148,136,0.08)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(13,148,136,0.35)";
+                  (e.currentTarget as HTMLElement).style.color = "#0f766e";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.15)";
-                  (e.currentTarget as HTMLElement).style.color = "rgba(203,213,225,0.85)";
-                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(255,253,248,0.9)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(180,130,40,0.25)";
+                  (e.currentTarget as HTMLElement).style.color = "#1c1814";
                   (e.currentTarget as HTMLElement).style.transform = "";
                 }}
               >
@@ -590,8 +591,8 @@ export default function Hero() {
                   <div className="flex items-center justify-between mb-5">
                     <div>
                       <p className="font-mono text-[10px] tracking-widest uppercase"
-                        style={{ color: "rgba(94,234,212,0.6)" }}>Employee ID</p>
-                      <p className="font-mono text-[10px]" style={{ color: "rgba(148,163,184,0.4)" }}>RNR-2024-001</p>
+                        style={{ color: "#57534e" }}>Employee ID</p>
+                      <p className="font-mono text-[10px]" style={{ color: "#78716c" }}>RNR-2024-001</p>
                     </div>
                     {/* Logo badge */}
                     <div
@@ -644,9 +645,8 @@ export default function Hero() {
                   <div className="mb-4 text-center">
                     <h3
                       style={{
-                        fontFamily: "'Hugheid', cursive",
-                        color: "#f1f5f9",
-                        textShadow: "0 0 40px rgba(20,184,166,0.2)",
+                        fontFamily: "'Georgia', 'Times New Roman', serif",
+                        color: "#1c1814",
                       }}
                       className="text-xl sm:text-2xl leading-tight"
                     >
@@ -654,7 +654,7 @@ export default function Hero() {
                     </h3>
                     <p
                       className="font-mono text-[10px] mt-1 tracking-wide"
-                      style={{ color: "rgba(94,234,212,0.8)" }}
+                      style={{ color: "#0d9488" }}
                     >
                       Supply Chain · Purchaser · Cost Controller
                     </p>
@@ -674,7 +674,7 @@ export default function Hero() {
                     ].map((item, i) => (
                       <div key={i} className="text-center">
                         <p className="font-mono uppercase tracking-wider mb-1"
-                          style={{ fontSize: 9, color: "rgba(148,163,184,0.4)" }}>
+                          style={{ fontSize: 9, color: "#78716c" }}>
                           {item.label}
                         </p>
                         {item.isStatus ? (
@@ -687,7 +687,7 @@ export default function Hero() {
                           </div>
                         ) : (
                           <p className="font-body text-[11px]"
-                            style={{ color: "rgba(203,213,225,0.8)" }}>{item.value}</p>
+                            style={{ color: "#1c1814" }}>{item.value}</p>
                         )}
                       </div>
                     ))}
@@ -702,20 +702,12 @@ export default function Hero() {
                       ))}
                     </div>
                     <p className="font-mono text-center mt-1 tracking-widest"
-                      style={{ fontSize: 8, color: "rgba(148,163,184,0.25)" }}>
+                      style={{ fontSize: 8, color: "#94a3b8" }}>
                       085159522095
                     </p>
                   </div>
                 </div>
               </div>
-
-              {/* Hint text */}
-              <p
-                className={`font-mono text-[10px] mt-4 tracking-wider animate-pulse hidden sm:block ${mounted ? "opacity-100" : "opacity-0"}`}
-                style={{ transition: "opacity 1s ease 1.2s", color: "rgba(148,163,184,0.3)" }}
-              >
-                drag me · hover me
-              </p>
             </div>
           </div>
         </div>
