@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
-import { useTheme } from "../components/ThemeContext";
 
 const roles = [
   "Purchasing",
@@ -30,7 +29,7 @@ const ORBS = [
 ];
 
 export default function Hero() {
-  const { theme } = useTheme();
+  
   const [roleIdx, setRoleIdx] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [typing, setTyping] = useState(true);
@@ -223,7 +222,7 @@ export default function Hero() {
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
-          filter: theme === "light"
+          filter: true
             ? "brightness(1.5) contrast(0.85) saturate(0.9)"
             : "brightness(1.2) contrast(0.92)",
         }}
@@ -231,14 +230,14 @@ export default function Hero() {
 
       {/* ─── Dark scrim ─── */}
       <div className="absolute inset-0" style={{
-        background: theme === "light"
+        background: true
           ? "rgba(5,15,35,0.62)"
           : "rgba(0,0,0,0.45)",
       }} />
 
       {/* ─── Side gradient ─── */}
       <div className="absolute inset-0" style={{
-        background: theme === "light"
+        background: true
           ? "linear-gradient(105deg, rgba(10,20,60,0.7) 0%, rgba(0,80,100,0.25) 50%, transparent 100%)"
           : "linear-gradient(105deg, rgba(0,0,0,0.45) 0%, transparent 60%)",
       }} />
