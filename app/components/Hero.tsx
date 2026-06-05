@@ -416,10 +416,9 @@ export default function Hero() {
                 onClick={() => document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" })}
                 className="group relative flex items-center gap-2 px-6 py-3 text-sm font-medium rounded-xl overflow-hidden"
                 style={{
-                  background: "rgba(20,184,166,0.12)",
+                  background: "rgba(255,253,248,0.9)",
                   border: "1px solid rgba(180,130,40,0.25)",
                   color: "#1c1814",
-                  background: "rgba(255,253,248,0.9)",
                   transition: "all 0.3s ease",
                 }}
                 onMouseEnter={e => {
